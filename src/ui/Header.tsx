@@ -1,0 +1,31 @@
+import './Header.module.css'
+import styles from './Header.module.css'
+import { type ActionActive } from '../bll/useAddActive'
+
+
+type Props = {
+  actionActive: ActionActive
+}
+
+export function Header(props: Props) {
+
+  return (
+    <div className={styles.header}>
+      <div className={styles.container}>
+        <div className={styles.headerBody}>
+          <div
+          className={styles.headerLogo}
+          onClick={() => props.actionActive.addActiveFalse()}>
+            <h1>Babito</h1>
+          </div>
+          <div className={styles.headerTools}>
+            <button
+              onClick={() => props.actionActive.addActiveTrue()}>
+              Добавить
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}

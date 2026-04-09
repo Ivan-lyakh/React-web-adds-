@@ -1,0 +1,13 @@
+.listAdd{
+  padding: 25px 0px;
+}
+
+.listAddBody{
+  display: grid;
+  grid-template-columns: repeat(1,1fr);
+  gap: 30px;
+}
+
+.listAddHeader{
+  padding-bottom: 20px;
+}

@@ -1,0 +1,143 @@
+.sideBar {
+  background-color: orange;
+  padding: 20px 0px;
+}
+
+.sideBarBody{
+  display: flex;
+  gap: 20px;
+  padding-bottom: 15px;
+}
+
+.sideBarButton button{
+  padding: 5px 10px;
+}
+.sideBarCattegories select{
+  padding: 5px 10px;
+}
+
+.sideBarPrice{
+  display: flex;
+  gap: 20px;
+  justify-content: right;
+}
+
+.sideBarPrice input {
+  padding: 5px 10px;
+}
+
+
+.sideBarTitle input {
+  padding: 5px 10px;
+}
+
+.sideBarColumn{
+  display: flex;
+  gap: 20px;
+}
+
+.sideBarLiveSearch{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  color: #fff;
+}
+
+.sideBarHeader{
+  display: flex;
+  gap: 20px;
+}
+
+@media (max-width:950px){
+  .sideBarPrice input{
+    max-width: 100px;
+  }
+}
+
+@media (max-width:768px){
+  .sideBarBody{
+    display: grid;
+    grid-template-columns: 1 1fr;
+    grid-row: 2;
+    gap: 20px;
+  }
+}
+
+
+@media (max-width:450px){
+  .sideBarHeader{
+    max-width: 100%;
+    flex-direction: column;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.container {
+  width: 100%;
+  padding: 0px 20px;
+  min-height: 100%;
+}
+
+@media (min-width:768px) {
+  .container {
+    width: 100%;
+    padding: 0px 40px;
+  }
+}
+
+@media (min-width:1000px) {
+  .container {
+    max-width: 1000px;
+    margin: 0px auto;
+    border-left: 1px solid rgba(128, 128, 128, 0.283);
+    border-right: 1px solid rgba(128, 128, 128, 0.285);
+  }
+}
+
+@media (min-width:1200px) {
+  .container {
+    max-width: 1100px;
+    margin: 0px auto;
+  }
+}
+
+@media (min-width:1400px) {
+  .container {
+    max-width: 1200px;
+    margin: 0px auto;
+  }
+}
+
+@media (min-width:1500px) {
+  .container {
+    max-width: 1350px;
+    margin: 0px auto;
+  }
+}
+
+@media (min-width:1550px) {
+  .container {
+    max-width: 1450px;
+    margin: 0px auto;
+  }
+}

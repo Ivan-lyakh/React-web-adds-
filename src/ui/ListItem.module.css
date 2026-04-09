@@ -1,0 +1,8 @@
+.item{
+  padding: 20px;
+  border: 4px solid grey;
+}
+
+.item h2{
+  margin-bottom: 15px;
+}

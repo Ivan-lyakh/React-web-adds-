@@ -1,0 +1,39 @@
+.createAds{
+  padding: 20px 0px;
+  height: 100%;
+}
+
+.createAdsBody{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.createAdsColumn input{
+  background-color: orange;
+  padding: 10px 15px;
+  color: #fff;
+}
+
+.createAdsColumn input::placeholder{
+  background-color: orange;
+  color: #fff;
+}
+
+
+.createAdsColumn select{
+  background-color: orange;
+  padding: 10px 15px;
+  color: #fff;
+  width: 198px;
+}
+
+
+.createAdsButton{
+  display: flex;
+  justify-content: center;
+}
+
+.createAdsButton button{
+  padding: 10px 15px;
+}
