@@ -1,19 +1,23 @@
 import { useState } from "react";
-
+import { supabase } from "../supaBaseClient";
 
 export type ActionForm = {
   resetForm: () => void
   getTitle: (e: React.ChangeEvent<HTMLInputElement>) => void
   getPrice: (e: React.ChangeEvent<HTMLInputElement>) => void
   getCity: (e: React.ChangeEvent<HTMLInputElement>) => void
+  getFiles: (e: React.ChangeEvent<HTMLInputElement>) => void
   getCattegories: (e: React.ChangeEvent<HTMLSelectElement>) => void
+  upload: (file: File) => Promise<string>
 }
+
 
 export type InittalForm = {
   price: string,
   title: string,
   city: string,
-  categories: string
+  categories: string,
+  img: File[]
 }
 
 export const categories = [
@@ -39,7 +43,7 @@ export const categories = [
   { label: "Ювелирные изделия", value: "jewelry" }
 ]
 
-export const translateCategories = (cat:string) => {
+export const translateCategories = (cat: string) => {
   const found = categories.find(c => c.value === cat)
   return found ? found.label : cat
 }
@@ -50,7 +54,8 @@ export function useForm() {
     price: '',
     title: '',
     city: '',
-    categories: ''
+    categories: '',
+    img: []
   }
 
   const [form, setForm] = useState<InittalForm>(InittalForm)
@@ -59,6 +64,40 @@ export function useForm() {
     setForm(prev => ({
       ...prev,
       title: e.target.value
+    }))
+  }
+
+  async function upload(file: File) {
+
+    const fileName = Date.now() + '-' + file.name
+
+    const { error } = await supabase.storage
+      .from('ads-img')
+      .upload(fileName, file, {
+        contentType: file.type,
+      })
+
+
+    const { data } = supabase.storage
+      .from('ads-img')
+      .getPublicUrl(fileName)
+
+    if (error) {
+      console.error('UPLOAD ERROR:', error)
+    }
+
+    return data.publicUrl
+  }
+
+
+
+  function getFiles(e: React.ChangeEvent<HTMLInputElement>) {
+
+    const files = e.target.files
+
+    setForm(prev => ({
+      ...prev,
+      img: files ? Array.from(files) : []
     }))
   }
 
@@ -88,7 +127,7 @@ export function useForm() {
   }
 
 
-  const actionForm: ActionForm = { getCity, getPrice, getTitle, getCattegories, resetForm }
+  const actionForm: ActionForm = { getCity, getPrice, getTitle, getCattegories, resetForm, getFiles, upload }
 
   return { actionForm, form, categories }
 }

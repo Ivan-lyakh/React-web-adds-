@@ -1,5 +1,5 @@
 
-import type { ActionGL } from '../bll/useAddList'
+import type { ActionGL, newForm } from '../bll/useAddList'
 import { categories, useForm } from '../bll/useForm'
 import './CreateAds.module.css'
 import styles from './CreateAds.module.css'
@@ -20,7 +20,24 @@ export function CreateAds(props: Props) {
         className={styles.createAdsBody}
         onSubmit={async (e) => {
           e.preventDefault()
-          props.actionGL.addGlobalList(form)
+
+          const files = form.img
+          console.log('FILES:', files)
+
+
+          const urls = await Promise.all(
+            files.map(file => {
+              console.log('UPLOAD FILE:', file)
+              return actionForm.upload(file)
+            })
+          )
+
+          const newForm: newForm = {
+            ...form,
+            img: urls
+          }
+
+          props.actionGL.addGlobalList(newForm)
           actionForm.resetForm()
         }}>
 
@@ -67,6 +84,13 @@ export function CreateAds(props: Props) {
             required
             placeholder='Город:'
             type='text' />
+        </div>
+
+        <div className={styles.createAdsColumn}>
+          <input
+            onChange={(e) => actionForm.getFiles(e)}
+            required
+            type='file' />
         </div>
 
         <div className={styles.createAdsButton}>

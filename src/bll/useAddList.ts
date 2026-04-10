@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { getAds } from "../dal/api";
 import { addAds } from "../dal/api";
-import type { InittalForm } from "./useForm";
+
 
 export type ActionGL = {
-  addGlobalList: (form: InittalForm) => void
+  addGlobalList: (form: newForm) => void
 }
 
 export type GlobalList = {
@@ -13,6 +13,15 @@ export type GlobalList = {
   city: string
   id: string
   categories: string
+  img: string
+}
+
+export type newForm = {
+  price: string,
+  title: string,
+  city: string,
+  categories: string,
+  img: string[]
 }
 
 
@@ -30,7 +39,7 @@ export function useAddList() {
   }, [])
 
 
-  async function addGlobalList(form: InittalForm) {
+  async function addGlobalList(form: newForm) {
     await addAds(form)
 
     const updated = await getAds()

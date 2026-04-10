@@ -1,5 +1,5 @@
 
-import type { InittalForm } from "../bll/useForm";
+import type { newForm } from "../bll/useAddList";
 import { supabase } from "../supaBaseClient";
 
 export async function getAds() {
@@ -16,7 +16,7 @@ export async function getAds() {
 }
 
 
-export async function addAds(newItem: InittalForm) {
+export async function addAds(newItem: newForm) {
   const { data, error } = await supabase
     .from('ads')
     .insert([newItem])
