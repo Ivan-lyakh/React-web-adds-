@@ -9,6 +9,8 @@ export type ActionForm = {
   getFiles: (e: React.ChangeEvent<HTMLInputElement>) => void
   getCattegories: (e: React.ChangeEvent<HTMLSelectElement>) => void
   upload: (file: File) => Promise<string>
+  setMainImage: (index: number) => void
+  deleteImg: (index: number) => void
 }
 
 
@@ -42,6 +44,7 @@ export const categories = [
   { label: "Электроника", value: "electronics" },
   { label: "Ювелирные изделия", value: "jewelry" }
 ]
+
 
 export const translateCategories = (cat: string) => {
   const found = categories.find(c => c.value === cat)
@@ -89,17 +92,61 @@ export function useForm() {
     return data.publicUrl
   }
 
+  const setMainImage = (index:number) => {
+    setForm(prev => {
+      const newArr = [...prev.img];
 
+      const selected = newArr[index]; // выбранный файл
+
+      newArr.splice(index, 1); // удалить его из старого места
+      newArr.unshift(selected); // добавить в начало
+
+      return {
+        ...prev,
+        img: newArr
+      };
+    });
+  };
+
+  const deleteImg = (index:number) => {
+    setForm(prev => {
+      const newArr = [...prev.img];
+
+
+      newArr.splice(index, 1); // удалить его из старого места
+
+      return {
+        ...prev,
+        img: newArr
+      };
+    });
+  };
+
+  const MAX_FILES = 12;
 
   function getFiles(e: React.ChangeEvent<HTMLInputElement>) {
+    const files = e.target.files;
 
-    const files = e.target.files
+    if (!files) return;
 
-    setForm(prev => ({
-      ...prev,
-      img: files ? Array.from(files) : []
-    }))
+    const newFiles = Array.from(files);
+
+    setForm(prev => {
+      const availableSlots = MAX_FILES - prev.img.length;
+
+      const filesToAdd = newFiles.slice(0, availableSlots);
+
+      if (newFiles.length > availableSlots) {
+        alert(`Можно добавить только ${availableSlots} фото`);
+      }
+
+      return {
+        ...prev,
+        img: [...prev.img, ...filesToAdd]
+      };
+    });
   }
+
 
   function getPrice(e: React.ChangeEvent<HTMLInputElement>) {
     setForm(prev => ({
@@ -127,7 +174,7 @@ export function useForm() {
   }
 
 
-  const actionForm: ActionForm = { getCity, getPrice, getTitle, getCattegories, resetForm, getFiles, upload }
+  const actionForm: ActionForm = { getCity, getPrice, getTitle, getCattegories, resetForm, getFiles, upload , setMainImage , deleteImg }
 
   return { actionForm, form, categories }
 }

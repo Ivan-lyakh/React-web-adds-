@@ -12,6 +12,7 @@ export function CreateAds(props: Props) {
 
   const { form, actionForm } = useForm()
 
+  console.log(form)
 
   return (
     <div className={styles.createAds}>
@@ -86,16 +87,65 @@ export function CreateAds(props: Props) {
             type='text' />
         </div>
 
+
         <div className={styles.createAdsColumn}>
-          <input
-            onChange={(e) => actionForm.getFiles(e)}
-            required
-            type='file' />
+          <div className={styles.createAdsFile}>
+            <label className={styles.customFileUpload}>
+              Загрузить фото!
+              <input
+                type="file"
+                multiple
+                onChange={(e) => actionForm.getFiles(e)}
+              />
+            </label>
+            <div><h2>(max - 12)</h2></div>
+          </div>
         </div>
+
+        <div className={styles.createAdsColumn}>
+          {form.img.length === 0 ?
+            <div>
+              <h1>Фото не загружено!</h1>
+            </div>
+            :
+            <div>
+              <div style={{ paddingBottom: "15px" }}>
+                <p>Вы можете выбрать фото которе будет на обложке обявления кликнув по нему!</p>
+                <p>Фото которе выделено синей рамкой будет использовано для обложки вашего обявления!</p>
+              </div>
+              <div className={styles.createAdsPreviev}>
+                {
+                  form.img.map((file, index) => (
+                    <div className={styles.createAdsPrevievItem} key={index}>
+                      <img
+                        onClick={() => actionForm.setMainImage(index)}
+                        src={URL.createObjectURL(file)}
+                        alt="preview"
+                        style={
+                          index === 0
+                            ? { border: "3px solid blue", borderRadius: "5px" }
+                            : { border: "3px solid orange", borderRadius: "5px" }
+                        }
+                      />
+
+                      <button
+                        className={styles.deleteBtn}
+                        onClick={() => actionForm.deleteImg(index)}
+                      >
+                        ❌
+                      </button>
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+          }
+        </div>
+
 
         <div className={styles.createAdsButton}>
           <button
-            type='submit'>Отправить</button>
+            type='submit'>Опубликовать</button>
         </div>
       </form>
     </div>
