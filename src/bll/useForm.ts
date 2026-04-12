@@ -11,6 +11,7 @@ export type ActionForm = {
   upload: (file: File) => Promise<string>
   setMainImage: (index: number) => void
   deleteImg: (index: number) => void
+  statusTogle: () => void
 }
 
 
@@ -53,6 +54,10 @@ export const translateCategories = (cat: string) => {
 
 export function useForm() {
 
+  const [status, setStatus] = useState(false)
+
+  const statusTogle = () => setStatus(true)
+
   const InittalForm = {
     price: '',
     title: '',
@@ -70,9 +75,9 @@ export function useForm() {
     }))
   }
 
-  async function upload(file: File) {
-
-    const fileName = Date.now() + '-' + file.name
+  async function upload(file: File): Promise<string> {
+    const ext = file.type.split('/')[1]
+    const fileName = `${crypto.randomUUID()}.${ext}`
 
     const { error } = await supabase.storage
       .from('ads-img')
@@ -80,19 +85,19 @@ export function useForm() {
         contentType: file.type,
       })
 
+    if (error) {
+      console.error('UPLOAD ERROR:', error)
+      throw new Error('Upload failed')
+    }
 
     const { data } = supabase.storage
       .from('ads-img')
       .getPublicUrl(fileName)
 
-    if (error) {
-      console.error('UPLOAD ERROR:', error)
-    }
-
     return data.publicUrl
   }
 
-  const setMainImage = (index:number) => {
+  const setMainImage = (index: number) => {
     setForm(prev => {
       const newArr = [...prev.img];
 
@@ -108,10 +113,9 @@ export function useForm() {
     });
   };
 
-  const deleteImg = (index:number) => {
+  const deleteImg = (index: number) => {
     setForm(prev => {
       const newArr = [...prev.img];
-
 
       newArr.splice(index, 1); // удалить его из старого места
 
@@ -174,7 +178,7 @@ export function useForm() {
   }
 
 
-  const actionForm: ActionForm = { getCity, getPrice, getTitle, getCattegories, resetForm, getFiles, upload , setMainImage , deleteImg }
+  const actionForm: ActionForm = { getCity, getPrice, getTitle, getCattegories, resetForm, getFiles, upload, setMainImage, deleteImg, statusTogle }
 
-  return { actionForm, form, categories }
+  return { actionForm, form, categories, status }
 }

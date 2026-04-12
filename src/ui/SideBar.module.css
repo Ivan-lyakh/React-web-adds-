@@ -11,9 +11,13 @@
 
 .sideBarButton button{
   padding: 5px 10px;
+  font-family: 'Jost';
+  border-radius: 5px;
+  font-weight: 500;
 }
 .sideBarCattegories select{
   padding: 5px 10px;
+  font-family: 'Jost';
 }
 
 .sideBarPrice{
@@ -24,11 +28,13 @@
 
 .sideBarPrice input {
   padding: 5px 10px;
+  font-family: 'Jost';
 }
 
 
 .sideBarTitle input {
   padding: 5px 10px;
+  font-family: 'Jost';
 }
 
 .sideBarColumn{
@@ -41,6 +47,7 @@
   flex-direction: column;
   gap: 15px;
   color: #fff;
+  font-family: 'Jost';
 }
 
 .sideBarHeader{

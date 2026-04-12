@@ -15,7 +15,10 @@ type Props = {
   actionFormSearch: ActionFormSearch
 }
 
+
+
 export function ListAds(props: Props) {
+
 
   if (props.globalList.length === 0) {
     return (
@@ -30,8 +33,8 @@ export function ListAds(props: Props) {
   if (props.searchActive) {
     return (
       <FilterResult
-      globalList={props.globalList}
-      actionFormSearch={props.actionFormSearch}
+        globalList={props.globalList}
+        actionFormSearch={props.actionFormSearch}
       />
     )
   }
@@ -49,6 +52,7 @@ export function ListAds(props: Props) {
               city={ad.city}
               id={ad.id}
               categories={ad.categories}
+              img={ad.img}
             />
           )
         })}

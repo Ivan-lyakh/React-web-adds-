@@ -10,4 +10,17 @@
 
 .listAddHeader{
   padding-bottom: 20px;
+  font-family: 'Jost';
+}
+
+@media (min-width:768px){
+  .listAddBody{
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+
+@media (min-width:1400px){
+  .listAddBody{
+    grid-template-columns: repeat(3,1fr);
+  }
 }

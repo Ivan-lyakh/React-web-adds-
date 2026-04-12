@@ -13,17 +13,18 @@ createRoot(document.getElementById('root')!).render(
 
 function Main() {
 
-  const { addActiveStatus , actionActive} = useAddActive()
+  const { addActiveStatus, actionActive } = useAddActive()
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
         <Header
-          actionActive={actionActive}/>
+          actionActive={actionActive} />
       </div>
       <div className={styles.main}>
         <MainPage
-          addActiveStatus={addActiveStatus}/>
+          actionActive={actionActive}
+          addActiveStatus={addActiveStatus} />
       </div>
       <div className={styles.footer}>
         <Footer />

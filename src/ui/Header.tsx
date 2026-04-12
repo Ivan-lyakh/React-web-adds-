@@ -16,7 +16,7 @@ export function Header(props: Props) {
           <div
           className={styles.headerLogo}
           onClick={() => props.actionActive.addActiveFalse()}>
-            <h1>Babito</h1>
+            <h1>OXL</h1>
           </div>
           <div className={styles.headerTools}>
             <button

@@ -1,28 +1,45 @@
-.header{
+.header {
   border-bottom: 1px solid grey;
   padding: 20px 0px;
 }
 
-.headerBody{
+.headerBody {
   display: flex;
   justify-content: space-between;
 }
 
-.headerLogo{
+.headerLogo {
+  cursor: pointer;
+  width: 125px;
   border: 2px solid grey;
   padding: 10px 20px;
   display: flex;
+  justify-content: center;
   align-items: center;
+  font-family: 'Noto Sans';
+  font-weight: 600;
+  font-size: 25px;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
-.headerTools{
+.headerTools {
   display: flex;
   align-items: center;
 }
 
-.headerTools button{
+.headerTools button {
   padding: 10px 15px;
   border-radius: 5px;
+  font-family: 'Noto Sans';
+  font-weight: 500;
+  transition: 300ms;
+}
+
+.headerTools button:hover{
+  transition: 300ms;
+  background-color: orange;
+  color: #fff;
 }
 
 
@@ -41,52 +58,52 @@
 
 
 
-.container{
+.container {
   width: 100%;
   padding: 0px 20px;
   min-height: 100%;
 }
 
-@media (min-width:768px){
-  .container{
-  width: 100%;
-  padding: 0px 40px;
-}
-}
-
-@media (min-width:1000px){
-  .container{
-  max-width: 1000px;
-  margin: 0px auto;
-  border-left: 1px solid rgba(128, 128, 128, 0.283);
-  border-right: 1px solid rgba(128, 128, 128, 0.285);
-}
+@media (min-width:768px) {
+  .container {
+    width: 100%;
+    padding: 0px 40px;
+  }
 }
 
-@media (min-width:1200px){
-  .container{
-  max-width: 1100px;
-  margin: 0px auto;
-}
-}
-
-@media (min-width:1400px){
-  .container{
-  max-width: 1200px;
-  margin: 0px auto;
-}
+@media (min-width:1000px) {
+  .container {
+    max-width: 1000px;
+    margin: 0px auto;
+    border-left: 1px solid rgba(128, 128, 128, 0.283);
+    border-right: 1px solid rgba(128, 128, 128, 0.285);
+  }
 }
 
-@media (min-width:1500px){
-  .container{
-  max-width: 1350px;
-  margin: 0px auto;
-}
+@media (min-width:1200px) {
+  .container {
+    max-width: 1100px;
+    margin: 0px auto;
+  }
 }
 
-@media (min-width:1550px){
-  .container{
-  max-width: 1450px;
-  margin: 0px auto;
+@media (min-width:1400px) {
+  .container {
+    max-width: 1200px;
+    margin: 0px auto;
+  }
 }
+
+@media (min-width:1500px) {
+  .container {
+    max-width: 1350px;
+    margin: 0px auto;
+  }
+}
+
+@media (min-width:1550px) {
+  .container {
+    max-width: 1450px;
+    margin: 0px auto;
+  }
 }

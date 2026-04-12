@@ -31,3 +31,5 @@ export async function addAds(newItem: newForm) {
 
   return data[0].id
 }
+
+

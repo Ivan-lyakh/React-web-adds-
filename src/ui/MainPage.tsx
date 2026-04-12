@@ -5,9 +5,10 @@ import { ListAds } from './ListAds'
 import { useAddList } from '../bll/useAddList'
 import { SideBar } from './SideBar'
 import { useSideBar } from '../bll/useSideBar'
-
+import { type ActionActive } from '../bll/useAddActive'
 type Props = {
   addActiveStatus: boolean
+  actionActive: ActionActive
 }
 
 export function MainPage(props: Props) {
@@ -22,6 +23,7 @@ export function MainPage(props: Props) {
         <div className={styles.container}>
           <div className={styles.mainPageBody}>
             <CreateAds
+              actionActive={props.actionActive}
               actionGL={actionGL}
             />
           </div>

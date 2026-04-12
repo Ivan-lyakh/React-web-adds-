@@ -7,12 +7,14 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  font-family: 'Jost';
 }
 
 .createAdsColumn input {
   background-color: orange;
   padding: 10px 15px;
   color: #fff;
+  min-width: 200px;
 }
 
 .createAdsColumn input::placeholder {
@@ -34,8 +36,48 @@
   justify-content: center;
 }
 
+.statusDone{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  flex-direction: column;
+  gap: 25px;
+}
+
+
+
+.statusDone h1 {
+  font-family: "Jost";
+  font-size: 25px;
+  text-align: center;
+}
+
+.statusDone p{
+  font-family: 'Noto Sans';
+}
+
+.statusDone p button{
+  padding: 5px 8px;
+  border-radius: 3px;
+  transition: 300ms;
+}
+
+.statusDone p button:hover{
+  background-color: orange;
+  color: #fff;
+}
+
 .createAdsButton button {
   padding: 10px 15px;
+  font-weight: 500;
+  transition: 300ms;
+  border-radius: 5px;
+}
+
+.createAdsButton button:hover{
+  background-color: orange;
+  color: #fff;
 }
 
 .createAdsPreviev {
