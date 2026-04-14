@@ -13,6 +13,7 @@ type Props = {
   searchActive: boolean
   searchForm: InittalFormFilter
   actionFormSearch: ActionFormSearch
+  loading: boolean
 }
 
 
@@ -38,6 +39,7 @@ export function ListAds(props: Props) {
       />
     )
   }
+
 
   return (
     <div className={styles.listAdd}>

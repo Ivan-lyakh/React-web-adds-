@@ -1,0 +1,12 @@
+.loading{
+  display: flex;
+  height: 80vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading h1{
+  text-align: center;
+  font-size: 40px;
+  font-family: 'Jost';
+}

@@ -6,6 +6,9 @@ import { useAddList } from '../bll/useAddList'
 import { SideBar } from './SideBar'
 import { useSideBar } from '../bll/useSideBar'
 import { type ActionActive } from '../bll/useAddActive'
+import { Loading } from './Loading'
+
+
 type Props = {
   addActiveStatus: boolean
   actionActive: ActionActive
@@ -13,9 +16,9 @@ type Props = {
 
 export function MainPage(props: Props) {
 
-  const { globalList, actionGL } = useAddList()
+  const { globalList, actionGL, loading } = useAddList()
 
-  const { searchActive ,actionFormSearch , searchForm} = useSideBar()
+  const { searchActive, actionFormSearch, searchForm } = useSideBar()
 
   if (props.addActiveStatus) {
     return (
@@ -32,23 +35,30 @@ export function MainPage(props: Props) {
     )
   }
 
-  return (
-    <div className={styles.mainPage}>
-      <SideBar
-      searchActive={searchActive}
-      searchForm={searchForm}
-      actionFormSearch={actionFormSearch}
-      />
-      <div className={styles.container}>
-        <div className={styles.mainPageBody}>
-          <ListAds
-            searchForm={searchForm}
-            globalList={globalList}
-            searchActive={searchActive}
-            actionFormSearch={actionFormSearch}/>
+  if (loading) {
+    return <Loading/>
+  }
+
+  else {
+    return (
+      <div className={styles.mainPage}>
+        <SideBar
+          searchActive={searchActive}
+          searchForm={searchForm}
+          actionFormSearch={actionFormSearch}
+        />
+        <div className={styles.container}>
+          <div className={styles.mainPageBody}>
+            <ListAds
+              loading={loading}
+              searchForm={searchForm}
+              globalList={globalList}
+              searchActive={searchActive}
+              actionFormSearch={actionFormSearch} />
+          </div>
         </div>
       </div>
-    </div>
-  )
+    )
+  }
 
 }

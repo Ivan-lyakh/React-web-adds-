@@ -28,16 +28,18 @@ export type newForm = {
 export function useAddList() {
 
   const [globalList, setGlobalList] = useState<GlobalList[]>([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     async function loadData() {
       const data = await getAds()
       if (data) setGlobalList(data)
+      setLoading(false)
     }
 
     loadData()
-  }, [])
 
+  }, [])
 
   async function addGlobalList(form: newForm) {
     await addAds(form)
@@ -50,5 +52,5 @@ export function useAddList() {
 
   const actionGL: ActionGL = { addGlobalList }
 
-  return { globalList, actionGL }
+  return { globalList, actionGL, loading }
 }

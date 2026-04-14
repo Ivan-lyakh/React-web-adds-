@@ -14,7 +14,10 @@ ul li{list-style: none;}
 img{vertical-align: top;}
 h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: inherit;}
 
-
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 14px !important;
+}
 
 .wrapper{
   height: 100vh;

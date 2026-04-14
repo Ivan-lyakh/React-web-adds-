@@ -10,6 +10,11 @@
   transition: 300ms;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .item:hover{
   transform: scale(1.01);
 }
@@ -37,8 +42,8 @@
 
 @media(min-width:375px){
   .imgContainer{
-    max-width: 150px;
-    height: 150px;
+    max-width: 160px;
+    height: 160px;
   }
   .item{
     flex-direction: row;

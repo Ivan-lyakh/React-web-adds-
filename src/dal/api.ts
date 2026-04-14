@@ -33,3 +33,12 @@ export async function addAds(newItem: newForm) {
 }
 
 
+export async function getDetails(id:string) {
+  const { data } = await supabase
+    .from("ads")
+    .select("*")
+    .eq("id", id)
+    .single()
+
+  return { data }
+}
