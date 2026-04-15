@@ -14,6 +14,7 @@ export function CreateAds(props: Props) {
 
   const { form, actionForm, status } = useForm()
 
+
   if (!status) {
     return (
       <div className={styles.createAds}>
@@ -35,10 +36,12 @@ export function CreateAds(props: Props) {
               })
             )
 
+
             const newForm: newForm = {
               ...form,
               img: urls
             }
+
 
             props.actionGL.addGlobalList(newForm)
             actionForm.resetForm()
@@ -88,6 +91,7 @@ export function CreateAds(props: Props) {
               placeholder='Город:'
               type='text' />
           </div>
+
 
 
           <div className={styles.createAdsColumn}>
@@ -144,6 +148,14 @@ export function CreateAds(props: Props) {
             }
           </div>
 
+          <div className={styles.createAdsColumn}>
+            <textarea
+              value={form.read}
+              onChange={(e) => actionForm.getRead(e)}
+              required
+              placeholder='Опишите ваш товар:' />
+          </div>
+
 
           <div className={styles.createAdsButton}>
             <button
@@ -158,8 +170,8 @@ export function CreateAds(props: Props) {
     <div className={styles.statusDone}>
       <h1>Спасибо,ваше обявления было добавлено в наш список!✅</h1>
       <p>Вы сможете найти его на
-        <button 
-        onClick={() => props.actionActive.addActiveFalse()}
+        <button
+          onClick={() => props.actionActive.addActiveFalse()}
         >
           Главной Странице
         </button>

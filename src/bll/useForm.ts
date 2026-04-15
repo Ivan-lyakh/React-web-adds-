@@ -4,6 +4,7 @@ import { supabase } from "../supaBaseClient";
 export type ActionForm = {
   resetForm: () => void
   getTitle: (e: React.ChangeEvent<HTMLInputElement>) => void
+  getRead: (e: React.ChangeEvent<HTMLTextAreaElement>) => void
   getPrice: (e: React.ChangeEvent<HTMLInputElement>) => void
   getCity: (e: React.ChangeEvent<HTMLInputElement>) => void
   getFiles: (e: React.ChangeEvent<HTMLInputElement>) => void
@@ -20,7 +21,8 @@ export type InittalForm = {
   title: string,
   city: string,
   categories: string,
-  img: File[]
+  img: File[],
+  read: string,
 }
 
 export const categories = [
@@ -61,6 +63,7 @@ export function useForm() {
   const InittalForm = {
     price: '',
     title: '',
+    read: '',
     city: '',
     categories: '',
     img: []
@@ -68,10 +71,18 @@ export function useForm() {
 
   const [form, setForm] = useState<InittalForm>(InittalForm)
 
+
   function getTitle(e: React.ChangeEvent<HTMLInputElement>) {
     setForm(prev => ({
       ...prev,
       title: e.target.value
+    }))
+  }
+
+  function getRead(e: React.ChangeEvent<HTMLTextAreaElement>) {
+    setForm(prev => ({
+      ...prev,
+      read: e.target.value
     }))
   }
 
@@ -178,7 +189,7 @@ export function useForm() {
   }
 
 
-  const actionForm: ActionForm = { getCity, getPrice, getTitle, getCattegories, resetForm, getFiles, upload, setMainImage, deleteImg, statusTogle }
+  const actionForm: ActionForm = { getCity, getPrice, getTitle, getCattegories, resetForm, getFiles, upload, setMainImage, deleteImg, statusTogle, getRead }
 
   return { actionForm, form, categories, status }
 }

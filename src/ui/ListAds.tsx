@@ -53,6 +53,7 @@ export function ListAds(props: Props) {
               price={ad.price}
               city={ad.city}
               id={ad.id}
+              read={ad.read}
               categories={ad.categories}
               img={ad.img}
             />

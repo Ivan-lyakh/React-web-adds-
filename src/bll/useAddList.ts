@@ -12,6 +12,7 @@ export type GlobalList = {
   price: string
   city: string
   id: string
+  read: string ,
   categories: string
   img: string
 }
@@ -21,6 +22,7 @@ export type newForm = {
   title: string,
   city: string,
   categories: string,
+  read: string,
   img: string[]
 }
 

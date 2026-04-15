@@ -17,7 +17,20 @@
   min-width: 200px;
 }
 
+.createAdsColumn textarea {
+  background-color: orange;
+  padding: 10px 15px;
+  color: #fff;
+  min-width: 100%;
+  min-height: 200px;
+}
+
 .createAdsColumn input::placeholder {
+  background-color: orange;
+  color: #fff;
+}
+
+.createAdsColumn textarea::placeholder {
   background-color: orange;
   color: #fff;
 }
@@ -142,4 +155,5 @@ input[type="file"] {
     grid-template-columns: repeat(6, 150px);
     grid-template-rows: repeat(1, 150px);
   }
+
 }

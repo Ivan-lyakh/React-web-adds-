@@ -1,5 +1,5 @@
 .details {
-  padding: 50px 0px;
+  padding: 25px 0px;
 }
 
 .image {
@@ -7,6 +7,44 @@
   height: 300px;
   object-fit: cover;
   border-radius: 10px;
+}
+
+.detailsSwiperItem {
+  padding-bottom: 20px;
+  font-size: 20px;
+}
+
+.detailsBodyItem {
+  padding-bottom: 15px;
+}
+
+.detailsMain {
+  display: flex;
+  flex-direction: column;
+}
+
+.detailsMain {
+  padding: 20px 0px;
+}
+
+.detailsBody {
+  font-family: 'Jost';
+  font-size: 20px;
+  padding: 20px 0px;
+}
+
+.detailsRead {
+  padding: 20px;
+  background-color: orange;
+  color: #fff;
+  font-family: 'Noto Sans';
+  white-space: pre-wrap;
+  border-radius: 5px;
+}
+
+.detailsRead h2{
+  font-size: 20px;
+  padding-bottom: 25px;
 }
 
 .swiper-pagination-bullet {
@@ -29,64 +67,59 @@
 }
 
 
-@media (min-width: 450px) {
-  .swiper {
-    max-width: 400px;
-    margin: 0 auto;
-    height: 400px;
-  }
-
+@media (min-width:450px) {
   .image {
+    width: 100%;
     height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
   }
 }
 
 
-@media (min-width: 768px) {
-  .swiper {
-    max-width: 50%;
-    margin: 0px 0px;
-    height: 400px;
+@media (min-width:550px) {
+  .detailsSwiper {
+    flex: 70%;
+    min-width: 0;
   }
 
-  .image {
-    height: 400px;
+  .detailsBody {
+    flex: 30%;
+    min-width: 0;
   }
-  .detailsContainer{
+
+  .detailsMain {
     flex-direction: row;
+    max-width: 100%;
+    gap: 40px;
+  }
+
+  .image {
+    max-width: 100%;
   }
 }
 
-
-@media (min-width: 1050px) {
-  .swiper {
-    max-width: 60%;
-    margin: 0px 0px;
-    height: 550px;
-  }
-
+@media (min-width:768px) {
   .image {
     height: 500px;
   }
 }
 
-@media (min-width: 1050px) {
-  .swiper {
-    max-width: 50%;
-    margin: 0px 0px;
-    height: 600px;
+@media (min-width:1200px) {
+  .detailsSwiper {
+    flex: 50%;
+  }
+}
+
+@media (min-width:1400px) {
+  .detailsSwiper {
+    flex: 40%;
   }
 
   .image {
     height: 550px;
   }
 }
-
-
-
-
-
-
 
 
 
