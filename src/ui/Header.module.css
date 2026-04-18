@@ -29,6 +29,21 @@ a {
   color: #fff;
 }
 
+.leftColumn{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.createAds {
+  padding: 5px 7px;
+  border-radius: 5px;
+  font-family: 'Noto Sans';
+  font-weight: 500;
+  transition: 300ms;
+  font-size: 13px;
+}
+
 .headerTools {
   display: flex;
   align-items: center;
@@ -68,6 +83,12 @@ a {
   width: 100%;
   padding: 0px 20px;
   min-height: 100%;
+}
+
+@media (min-width: 450px){
+  .leftColumn{
+    flex-direction: row;
+  }
 }
 
 @media (min-width:768px) {

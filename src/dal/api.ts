@@ -33,7 +33,7 @@ export async function addAds(newItem: newForm) {
 }
 
 
-export async function getDetails(id:string) {
+export async function getDetails(id: string) {
   const { data } = await supabase
     .from("ads")
     .select("*")
@@ -41,4 +41,10 @@ export async function getDetails(id:string) {
     .single()
 
   return { data }
+}
+
+export const getUser = async () => {
+  const { data } = await supabase.auth.getUser()
+  
+    return data.user
 }

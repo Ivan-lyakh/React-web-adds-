@@ -1,0 +1,84 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.columnHeader {
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+}
+
+.columnHeader button{
+  background-color: inherit;
+  font-size: 16px;
+  transition: 300ms;
+}
+
+.columnHeader button:hover{
+  transform: scale(1.1);
+}
+
+.column span {
+  color: orange;
+  cursor: pointer;
+}
+
+.column button {
+  padding: 7px 20px;
+
+}
+
+.column input::placeholder {
+  color: #fff;
+  font-family: 'Noto Sans';
+  font-size: 12px;
+}
+
+.column input {
+  padding: 10px 15px;
+  background-color: orange;
+  color: #fff;
+  font-family: 'Noto Sans';
+  font-size: 12px;
+}
+
+.authModal {
+  font-family: "Jost";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(0, 0, 0, 0.5);
+  /* затемнение */
+
+  z-index: 1000;
+}
+
+
+.container {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  min-width: 250px;
+}
+
+@media (min-width: 450px) {
+  .container {
+    min-width: 400px;
+  }
+}
+
+
+@media (min-width: 768px) {
+  .container {
+    min-width: 550px;
+  }
+}

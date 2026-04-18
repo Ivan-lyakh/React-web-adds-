@@ -8,6 +8,9 @@ import { Footer } from './ui/Footer'
 import { useAddActive } from './bll/useAddActive'
 import { AdDetails } from './ui/AdDetails'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { useUsers } from './bll/useUsers'
+import { useState } from 'react'
+import { AuthModal } from './ui/AuthModal'
 
 createRoot(document.getElementById('root')!).render(
   <Main />
@@ -17,11 +20,21 @@ function Main() {
 
   const { addActiveStatus, actionActive } = useAddActive()
 
+  const { actualUser, loading, actionUser , errorMessage } = useUsers()
+
+  const [isAuthOpen, setIsAuthOpen] = useState(false)
+
+  console.log(actualUser, loading)
+
   return (
+
     <BrowserRouter>
       <div className={styles.wrapper}>
         <div className={styles.header}>
           <Header
+            setIsAuthOpen={setIsAuthOpen}
+            actionUser={actionUser}
+            actualUser={actualUser}
             actionActive={actionActive} />
         </div>
         <div className={styles.main}>
@@ -31,12 +44,16 @@ function Main() {
                 actionActive={actionActive}
                 addActiveStatus={addActiveStatus} />} />
             <Route path="/ad/:id" element={
-              <AdDetails/>} />
+              <AdDetails />} />
           </Routes>
         </div>
         <div className={styles.footer}>
           <Footer />
         </div>
+        {isAuthOpen && <AuthModal 
+        actionUser={actionUser}
+        errorMessage={errorMessage}
+        setIsAuthOpen={setIsAuthOpen} />}
       </div>
     </BrowserRouter>
   )
