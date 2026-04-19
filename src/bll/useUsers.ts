@@ -81,7 +81,7 @@ export function useUsers() {
 
 
 
-  const actionUser: ActionUser = { handleLogout, handleRegister, handleLogin , resetErorMessage  }
+  const actionUser: ActionUser = { handleLogout, handleRegister, handleLogin , resetErorMessage   }
 
   return { actualUser, loading, actionUser ,errorMessage }
 }

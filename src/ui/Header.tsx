@@ -4,7 +4,8 @@ import { type ActionActive } from '../bll/useAddActive'
 import { Link } from 'react-router-dom'
 import { type User } from '@supabase/supabase-js'
 import { type ActionUser } from '../bll/useUsers'
-
+import user from '../ui/images/user.png'
+import { useState, useRef, useEffect } from 'react'
 
 type Props = {
   actionActive: ActionActive
@@ -15,7 +16,23 @@ type Props = {
 
 export function Header(props: Props) {
 
+  const [isOpen, setIsOpen] = useState(false)
 
+  const menuRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
 
   return (
     <div className={styles.header}>
@@ -29,23 +46,48 @@ export function Header(props: Props) {
                 className={styles.headerLogo}
                 onClick={() => {
                   props.actionActive.addActiveFalse(),
-                  props.setIsAuthOpen(false)
+                    props.setIsAuthOpen(false)
                 }}>
                 <h1>OXL</h1>
               </div>
             </Link>
-            <button
-              className={styles.createAds}
-              onClick={() => props.actionActive.addActiveTrue()}>
-              Создать обявления
-            </button>
           </div>
           <div className={styles.headerTools}>
-            <button
-            onClick={() => {props.actualUser === null ? props.setIsAuthOpen(true) : props.actionUser.handleLogout()}}
-            >
-              {props.actualUser === null ? "Войти" : "Выйти"}
-            </button>
+            {props.actualUser &&
+              <div className={styles.user} ref={menuRef}>
+
+                <img
+                  src={user}
+                  alt="user"
+                  onClick={() => setIsOpen(!isOpen)}
+                />
+
+                {isOpen &&
+                  <div className={styles.dropDown}>
+                    <h3 className={styles.email}>{props.actualUser.email}</h3>
+                    <h2 onClick={() => {
+                      props.actionActive.addActiveTrue()
+                      setIsOpen(false)
+                    }}>
+                      Создать обявления
+                    </h2>
+
+                    <h2>Мои обялвения</h2>
+                    <h2>Сохраненные обявления</h2>
+
+                    <button onClick={() => {
+                      props.actionUser.handleLogout()
+                      setIsOpen(false)
+                      props.actionActive.addActiveFalse()
+                    }}>
+                      Выйти
+                    </button>
+                  </div>
+                }
+              </div>}
+            {!props.actualUser && <button
+              onClick={() => props.setIsAuthOpen(true)}
+            >Войти</button>}
           </div>
         </div>
       </div>

@@ -1,3 +1,4 @@
+import type { ActionActive } from "../bll/useAddActive"
 import { useAuthModal } from "../bll/useAuthModal"
 import type { ActionUser } from "../bll/useUsers"
 import styles from './AuthModal.module.css'
@@ -10,7 +11,7 @@ type Props = {
 
 export function AuthModal(props: Props) {
 
-  const { email, registerMode, password, setRegisterMode, setEmail, setPassword } = useAuthModal()
+  const { email, registerMode, password, setRegisterMode, setEmail, setPassword, reset } = useAuthModal()
 
 
   return (
@@ -18,16 +19,19 @@ export function AuthModal(props: Props) {
       <div className={styles.container}>
         <div className={styles.body}>
           <div className={styles.columnHeader}>
-            <h2>{registerMode  ? "Регестрация" : "Логин"}</h2>
+            <h2>{registerMode ? "Регистрация" : "Логин"}</h2>
             <button
-            onClick={() => {
-              props.setIsAuthOpen(false),
-              props.actionUser.resetErorMessage()
-            }}
+              onClick={() => {
+                props.setIsAuthOpen(false),
+                  props.actionUser.resetErorMessage()
+                reset()
+              }}
             >❌</button>
           </div>
           <div className={styles.column}>
             <input
+              name="random-email"
+              autoComplete="off"
               placeholder="email*"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -36,14 +40,17 @@ export function AuthModal(props: Props) {
           </div>
           <div className={styles.column}>
             <input
-              placeholder="password"
+              name="random-password"
+              autoComplete="new-password"
+              placeholder="password*"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               type="password" />
 
           </div>
           <div className={styles.column}>
-            {props.errorMessage && <p style={{color: "red" , marginBottom: "10px"}}>Произошла ошибка,проверьте свой логин и пароль! </p>}
+            {props.errorMessage && !registerMode && <p style={{ color: "red", marginBottom: "10px" }}>Произошла ошибка,проверьте свой логин и пароль! </p>}
+            {props.errorMessage && registerMode && <p style={{ color: "red", marginBottom: "10px" }}>Произошла ошибка, данный email адресс уже используеться в нашей системе ,или же он был введен неккоректно </p>}
             <button
               onClick={async () => {
                 if (registerMode) {
@@ -65,8 +72,8 @@ export function AuthModal(props: Props) {
             </button>
           </div>
           <div className={styles.column}>
-            {!registerMode && <h2>Нет аккаунта? <span onClick={() => setRegisterMode(true)}>Зарегестрируйте</span> его прямо сейчас!</h2>}
-            {registerMode && <h2>Есть аккаунт? <span onClick={() => setRegisterMode(false)}>Войдите</span> в него прямо сейчас!</h2>}
+            {!registerMode && <h2>Нет аккаунта? <span onClick={() => { setRegisterMode(true), props.actionUser.resetErorMessage(), reset() }}>Зарегестрируйте</span> его прямо сейчас!</h2>}
+            {registerMode && <h2>Есть аккаунт? <span onClick={() => { setRegisterMode(false), props.actionUser.resetErorMessage(), reset() }}>Войдите</span> в него прямо сейчас!</h2>}
           </div>
         </div>
       </div>

@@ -15,7 +15,7 @@ a {
 
 .headerLogo {
   cursor: pointer;
-  width: 125px;
+  width: 100px;
   padding: 10px 20px;
   display: flex;
   justify-content: center;
@@ -29,11 +29,14 @@ a {
   color: #fff;
 }
 
-.leftColumn{
+.leftColumn {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
+
+
+
 
 .createAds {
   padding: 5px 7px;
@@ -47,7 +50,46 @@ a {
 .headerTools {
   display: flex;
   align-items: center;
+  gap: 15px;
 }
+
+.user {
+  display: flex;
+  position: relative;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  font-family: "Jost";
+}
+
+
+.dropDown {
+  font-family: "Noto Sans";
+  position: absolute;
+  top: 35px;
+  right: 0px;
+  background: orange;
+  border-radius: 8px;
+  z-index: 1000;
+  padding: 20px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border: 2px solid rgb(201, 131, 0);
+}
+
+.dropDown h2 {
+  cursor: pointer;
+}
+
+.user img {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+
 
 .headerTools button {
   padding: 10px 15px;
@@ -61,6 +103,7 @@ a {
   transition: 300ms;
   background-color: orange;
   color: #fff;
+  border: 1px solid #fff;
 }
 
 
@@ -85,8 +128,8 @@ a {
   min-height: 100%;
 }
 
-@media (min-width: 450px){
-  .leftColumn{
+@media (min-width: 450px) {
+  .leftColumn {
     flex-direction: row;
   }
 }
