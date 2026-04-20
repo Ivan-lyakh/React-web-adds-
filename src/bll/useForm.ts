@@ -13,6 +13,9 @@ export type ActionForm = {
   setMainImage: (index: number) => void
   deleteImg: (index: number) => void
   statusTogle: () => void
+  getName: (name: string) => void
+  getPhone: (phone: string) => void
+  getUserId: (id: string) => void
 }
 
 
@@ -66,6 +69,9 @@ export function useForm() {
     read: '',
     city: '',
     categories: '',
+    user_id: '',
+    name: '',
+    phone: '',
     img: []
   }
 
@@ -83,6 +89,27 @@ export function useForm() {
     setForm(prev => ({
       ...prev,
       read: e.target.value
+    }))
+  }
+
+  function getName(name: string) {
+    setForm(prev => ({
+      ...prev,
+      name: name
+    }))
+  }
+
+  function getPhone(phone: string) {
+    setForm(prev => ({
+      ...prev,
+      phone: phone
+    }))
+  }
+
+  function getUserId(id: string) {
+    setForm(prev => ({
+      ...prev,
+      user_id: id
     }))
   }
 
@@ -189,7 +216,7 @@ export function useForm() {
   }
 
 
-  const actionForm: ActionForm = { getCity, getPrice, getTitle, getCattegories, resetForm, getFiles, upload, setMainImage, deleteImg, statusTogle, getRead }
+  const actionForm: ActionForm = { getCity, getPrice, getTitle, getCattegories, resetForm, getFiles, upload, setMainImage, deleteImg, statusTogle, getRead , getName , getPhone , getUserId }
 
   return { actionForm, form, categories, status }
 }

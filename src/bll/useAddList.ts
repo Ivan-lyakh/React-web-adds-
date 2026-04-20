@@ -23,6 +23,9 @@ export type newForm = {
   city: string,
   categories: string,
   read: string,
+  name: string,
+  phone: string,
+  user_id: string 
   img: string[]
 }
 

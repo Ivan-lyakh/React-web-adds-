@@ -1,4 +1,5 @@
 
+import type { User } from '@supabase/supabase-js'
 import type { ActionActive } from '../bll/useAddActive'
 import type { ActionGL, newForm } from '../bll/useAddList'
 import { categories, useForm } from '../bll/useForm'
@@ -8,6 +9,7 @@ import styles from './CreateAds.module.css'
 type Props = {
   actionGL: ActionGL
   actionActive: ActionActive
+  actualUser: User | null
 }
 
 export function CreateAds(props: Props) {
@@ -15,37 +17,71 @@ export function CreateAds(props: Props) {
   const { form, actionForm, status } = useForm()
 
 
+
   if (!status) {
     return (
+
       <div className={styles.createAds}>
 
         <form
           className={styles.createAdsBody}
           onSubmit={async (e) => {
+
             e.preventDefault()
 
+            console.log("STEP 1: submit started")
+
             const files = form.img
-            console.log('FILES:', files)
+            console.log("STEP 2: files", files)
 
             actionForm.statusTogle()
 
-            const urls = await Promise.all(
-              files.map(file => {
-                console.log('UPLOAD FILE:', file)
-                return actionForm.upload(file)
-              })
-            )
+            console.log("STEP 3: start upload")
 
+            const urls: string[] = []
 
-            const newForm: newForm = {
-              ...form,
-              img: urls
+            for (const file of files) {
+              try {
+                console.log("Uploading:", file)
+
+                const url = await actionForm.upload(file)
+
+                console.log("Uploaded URL:", url)
+
+                if (url) {
+                  urls.push(url)
+                } else {
+                  console.warn("EMPTY URL")
+                }
+
+              } catch (e) {
+                console.error("UPLOAD ERROR:", e)
+              }
             }
 
+            console.log("STEP 4: urls ready", urls)
 
-            props.actionGL.addGlobalList(newForm)
+
+            if (!props.actualUser) {
+              console.log("NO USER")
+              return
+            }
+
+            console.log("STEP 5: creating form")
+            const newForm: newForm = {
+              ...form,
+              img: urls,
+              name: props.actualUser.user_metadata?.name || "No name",
+              phone: props.actualUser.user_metadata?.phone || "No phone",
+              user_id: props.actualUser.id || ""
+            }
+
+            console.log(newForm)
+            await props.actionGL.addGlobalList(newForm)
             actionForm.resetForm()
           }}>
+
+
 
 
           <div className={styles.createAdsColumn}>

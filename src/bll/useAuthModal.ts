@@ -8,10 +8,16 @@ export function useAuthModal() {
 
   const [registerMode, setRegisterMode] = useState(false)
 
+  const [phone , setPhone ] = useState('')
+
+  const [name , setName] = useState ('')
+
   const reset = () => {
     setEmail('')
     setPassword('')
   }
 
-  return {registerMode , setRegisterMode, setPassword , password, setEmail , email ,reset  }
+  const atributes = {email ,password , phone , name}
+
+  return {registerMode , setRegisterMode, setPassword , setEmail ,  reset ,  atributes , setPhone , setName }
 }

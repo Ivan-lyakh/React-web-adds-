@@ -10,17 +10,33 @@
   font-size: 20px;
 }
 
-.columnHeader button{
+.columnHeader button {
   background-color: inherit;
   font-size: 16px;
   transition: 300ms;
 }
 
-.columnHeader button:hover{
+
+.columnHeader button:hover {
   transform: scale(1.1);
 }
 
-.column span {
+
+.passwordWrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.toggleBtn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.column span{
   color: orange;
   cursor: pointer;
 }

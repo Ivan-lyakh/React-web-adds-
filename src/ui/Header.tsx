@@ -56,34 +56,40 @@ export function Header(props: Props) {
             {props.actualUser &&
               <div className={styles.user} ref={menuRef}>
 
+                <div className={styles.userName}>
+                  <h2>{props.actualUser.user_metadata.name}</h2>
+                </div>
+
                 <img
                   src={user}
                   alt="user"
                   onClick={() => setIsOpen(!isOpen)}
                 />
 
-                {isOpen &&
-                  <div className={styles.dropDown}>
+                <div
+                  className={`${styles.dropDown} ${isOpen ? styles.open : ''}`}>
+                  <div className={styles.dropDownInfo}>
                     <h3 className={styles.email}>{props.actualUser.email}</h3>
-                    <h2 onClick={() => {
-                      props.actionActive.addActiveTrue()
-                      setIsOpen(false)
-                    }}>
-                      Создать обявления
-                    </h2>
-
-                    <h2>Мои обялвения</h2>
-                    <h2>Сохраненные обявления</h2>
-
-                    <button onClick={() => {
-                      props.actionUser.handleLogout()
-                      setIsOpen(false)
-                      props.actionActive.addActiveFalse()
-                    }}>
-                      Выйти
-                    </button>
+                    <h3 className={styles.email}>{props.actualUser.user_metadata.phone}</h3>
                   </div>
-                }
+                  <h2 onClick={() => {
+                    props.actionActive.addActiveTrue()
+                    setIsOpen(false)
+                  }}>
+                    Создать обявления
+                  </h2>
+
+                  <h2>Мои обялвения</h2>
+                  <h2>Сохраненные обявления</h2>
+
+                  <button onClick={() => {
+                    props.actionUser.handleLogout()
+                    setIsOpen(false)
+                    props.actionActive.addActiveFalse()
+                  }}>
+                    Выйти
+                  </button>
+                </div>
               </div>}
             {!props.actualUser && <button
               onClick={() => props.setIsAuthOpen(true)}

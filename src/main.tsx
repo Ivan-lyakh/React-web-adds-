@@ -20,11 +20,10 @@ function Main() {
 
   const { addActiveStatus, actionActive } = useAddActive()
 
-  const { actualUser, loading, actionUser , errorMessage } = useUsers()
+  const { actualUser, actionUser , errorMessage } = useUsers()
 
   const [isAuthOpen, setIsAuthOpen] = useState(false)
 
-  console.log(actualUser, loading)
 
   return (
 
@@ -41,6 +40,7 @@ function Main() {
           <Routes>
             <Route path='/' element={
               <MainPage
+                actualUser={actualUser}
                 actionActive={actionActive}
                 addActiveStatus={addActiveStatus} />} />
             <Route path="/ad/:id" element={

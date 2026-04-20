@@ -7,11 +7,13 @@ import { SideBar } from './SideBar'
 import { useSideBar } from '../bll/useSideBar'
 import { type ActionActive } from '../bll/useAddActive'
 import { Loading } from './Loading'
+import type { User } from '@supabase/supabase-js'
 
 
 type Props = {
   addActiveStatus: boolean
   actionActive: ActionActive
+  actualUser: User | null
 }
 
 export function MainPage(props: Props) {
@@ -26,6 +28,7 @@ export function MainPage(props: Props) {
         <div className={styles.container}>
           <div className={styles.mainPageBody}>
             <CreateAds
+              actualUser={props.actualUser}
               actionActive={props.actionActive}
               actionGL={actionGL}
             />

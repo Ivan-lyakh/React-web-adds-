@@ -8,7 +8,7 @@ import { type User } from '@supabase/supabase-js'
 export type ActionUser = {
   handleLogout: () => void
   handleLogin: (email: string, password: string) => Promise<boolean>
-  handleRegister: (email: string, password: string) => Promise<boolean>
+  handleRegister: (email: string, password: string ,name: string , phone: string) => Promise<boolean>
   resetErorMessage: () => void
 }
 
@@ -20,7 +20,7 @@ export function useUsers() {
 
   const [errorMessage, setErrorMessage] = useState<null | string>(null)
 
-  function resetErorMessage (){
+  function resetErorMessage() {
     setErrorMessage(null)
   }
 
@@ -34,11 +34,17 @@ export function useUsers() {
     loadUser()
   }, [])
 
-  const handleRegister = async (email: string, password: string) => {
+  const handleRegister = async (email: string, password: string, name: string, phone: string) => {
 
     const { data, error } = await supabase.auth.signUp({
       email: email,
-      password: password
+      password: password,
+      options: {
+        data: {
+          name: name,
+          phone: phone
+        }
+      }
     })
 
     if (error) {
@@ -79,10 +85,8 @@ export function useUsers() {
   }
 
 
+  const actionUser: ActionUser = { handleLogout, handleRegister, handleLogin, resetErorMessage }
 
-
-  const actionUser: ActionUser = { handleLogout, handleRegister, handleLogin , resetErorMessage   }
-
-  return { actualUser, loading, actionUser ,errorMessage }
+  return { actualUser, loading, actionUser, errorMessage }
 }
 

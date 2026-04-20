@@ -36,7 +36,13 @@ a {
 }
 
 
-
+.userName {
+  background-color: orange;
+  padding: 6px 10px;
+  color: #fff;
+  border-radius: 3px;
+  font-size: 15px;
+}
 
 .createAds {
   padding: 5px 7px;
@@ -51,6 +57,14 @@ a {
   display: flex;
   align-items: center;
   gap: 15px;
+}
+
+.dropDownInfo {
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-bottom: 1px solid #fff;
 }
 
 .user {
@@ -76,11 +90,38 @@ a {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  border: 2px solid rgb(201, 131, 0);
+  border: 1px solid rgb(201, 131, 0);
+  transition: 300ms;
+}
+
+.dropDown {
+  position: absolute;
+  right: 0px;
+  top: 110%;
+  opacity: 0;
+  transform: translateX(20px);
+  /* сдвиг вправо */
+  pointer-events: none;
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.1),
+    0 10px 20px rgba(0, 0, 0, 0.15);
+
+  transition: all 0.2s ease;
+}
+
+.open {
+  opacity: 1;
+  transform: translateX(0);
+  /* возвращаем на место */
+  pointer-events: auto;
 }
 
 .dropDown h2 {
   cursor: pointer;
+}
+
+.dropDown h2:hover {
+  text-decoration: underline;
 }
 
 .user img {
