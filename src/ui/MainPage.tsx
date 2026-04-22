@@ -8,12 +8,15 @@ import { useSideBar } from '../bll/useSideBar'
 import { type ActionActive } from '../bll/useAddActive'
 import { Loading } from './Loading'
 import type { User } from '@supabase/supabase-js'
+import { MyAds } from './MyAds'
 
 
 type Props = {
   addActiveStatus: boolean
   actionActive: ActionActive
   actualUser: User | null
+  myAdsOpen: boolean
+  setMyAdsOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export function MainPage(props: Props) {
@@ -21,6 +24,22 @@ export function MainPage(props: Props) {
   const { globalList, actionGL, loading } = useAddList()
 
   const { searchActive, actionFormSearch, searchForm } = useSideBar()
+
+
+  if (props.myAdsOpen) {
+    return (
+      <div className={styles.mainPage}>
+        <div className={styles.container}>
+          <div className={styles.mainPageBody}>
+            <MyAds
+              actualUser={props.actualUser}
+              setMyAdsOpen={props.setMyAdsOpen}
+            />
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   if (props.addActiveStatus) {
     return (
@@ -39,7 +58,7 @@ export function MainPage(props: Props) {
   }
 
   if (loading) {
-    return <Loading/>
+    return <Loading />
   }
 
   else {

@@ -43,8 +43,27 @@ export async function getDetails(id: string) {
   return { data }
 }
 
+export async function getMyAds(userId: string) {
+  const { data } = await supabase
+    .from("ads")
+    .select("*")
+    .eq("user_id", userId)
+  return { data }
+}
+
+export const handleDelete = async (adsId: string) => {
+  const { error } = await supabase
+    .from('ads')
+    .delete()
+    .eq('id', adsId);
+
+  if (error) {
+    console.error(error);
+  }
+};
+
 export const getUser = async () => {
   const { data } = await supabase.auth.getUser()
-  
-    return data.user
+
+  return data.user
 }

@@ -22,8 +22,9 @@ function Main() {
 
   const { actualUser, actionUser , errorMessage } = useUsers()
 
-  const [isAuthOpen, setIsAuthOpen] = useState(false)
+  const [myAdsOpen,setMyAdsOpen] = useState(false)
 
+  const [isAuthOpen, setIsAuthOpen] = useState(false)
 
   return (
 
@@ -31,6 +32,7 @@ function Main() {
       <div className={styles.wrapper}>
         <div className={styles.header}>
           <Header
+            setMyAdsOpen={setMyAdsOpen}
             setIsAuthOpen={setIsAuthOpen}
             actionUser={actionUser}
             actualUser={actualUser}
@@ -40,8 +42,10 @@ function Main() {
           <Routes>
             <Route path='/' element={
               <MainPage
+                myAdsOpen={myAdsOpen}
                 actualUser={actualUser}
                 actionActive={actionActive}
+                setMyAdsOpen={setMyAdsOpen}
                 addActiveStatus={addActiveStatus} />} />
             <Route path="/ad/:id" element={
               <AdDetails />} />

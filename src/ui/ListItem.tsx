@@ -15,9 +15,9 @@ export function ListItem(props: GlobalList) {
             className={styles.img}
             src={JSON.parse(props.img)[0]} />
         </div>
-        <div>
+        <div className={styles.body}>
           <h2><b>{props.title}</b></h2>
-          <h2>Цена: {props.price}$</h2>
+          <h2>Цена: {Number(props.price).toLocaleString('de-DE')}$</h2>
           <h2>Город: {props.city}</h2>
           <h2>Каттегория: {translateCategories(props.categories)}</h2>
         </div>

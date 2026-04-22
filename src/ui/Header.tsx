@@ -12,6 +12,7 @@ type Props = {
   actualUser: User | null
   actionUser: ActionUser
   setIsAuthOpen: React.Dispatch<React.SetStateAction<boolean>>
+  setMyAdsOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export function Header(props: Props) {
@@ -47,6 +48,7 @@ export function Header(props: Props) {
                 onClick={() => {
                   props.actionActive.addActiveFalse(),
                     props.setIsAuthOpen(false)
+                  props.setMyAdsOpen(false)
                 }}>
                 <h1>OXL</h1>
               </div>
@@ -79,12 +81,20 @@ export function Header(props: Props) {
                     Создать обявления
                   </h2>
 
-                  <h2>Мои обялвения</h2>
+                  <h2
+                    onClick={() => {
+                      props.setMyAdsOpen(true)
+                      setIsOpen(false)
+                    }}
+                  >Мои обялвения
+                  </h2>
+
                   <h2>Сохраненные обявления</h2>
 
                   <button onClick={() => {
                     props.actionUser.handleLogout()
                     setIsOpen(false)
+                    props.setMyAdsOpen(false)
                     props.actionActive.addActiveFalse()
                   }}>
                     Выйти
@@ -92,7 +102,9 @@ export function Header(props: Props) {
                 </div>
               </div>}
             {!props.actualUser && <button
-              onClick={() => props.setIsAuthOpen(true)}
+              onClick={() => {
+                props.setIsAuthOpen(true)
+              }}
             >Войти</button>}
           </div>
         </div>

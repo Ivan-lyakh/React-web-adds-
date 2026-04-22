@@ -1,0 +1,49 @@
+.item {
+  display: flex;
+  gap: 15px;
+  padding: 10px ;
+}
+
+
+.myAds{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.itemBody{
+  border: 1px solid #000;
+}
+
+
+.itemTools{
+  display: flex;
+  justify-content: right;
+  gap: 10px;
+}
+
+.itemTools button{
+  padding: 0px 10px;
+}
+.itemSection img {
+  max-width: 90px;
+}
+
+.itemSectionBody {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 15px;
+  align-items: start;
+  font-family: 'Jost';
+  justify-content: center;
+  padding: 10px;
+}
+
+
+@media (min-width: 1000px){
+  .myAds{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+  }
+}

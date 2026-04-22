@@ -9,6 +9,23 @@
   border-radius: 10px;
 }
 
+.contact{
+  background-color: orange;
+  color: #fff;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.containerContact{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact h2{
+  padding-bottom: 20px;
+}
+
 .detailsSwiperItem {
   padding-bottom: 20px;
   font-size: 20px;

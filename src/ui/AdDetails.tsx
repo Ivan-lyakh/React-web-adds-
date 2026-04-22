@@ -49,13 +49,20 @@ export function AdDetails() {
           </div>
           <div className={styles.detailsBody}>
             <div className={styles.detailsBodyItem}>
-              <h2>Цена указанная продавцом: {ad.price}$</h2>
+              <h2>Цена указанная продавцом: {Number(ad.price).toLocaleString('de-DE')}$</h2>
             </div>
             <div className={styles.detailsBodyItem}>
               <h2>Каттегория: {translateCategories(ad.categories)}</h2>
             </div>
             <div className={styles.detailsBodyItem}>
               <h2>Город: {ad.city}</h2>
+            </div>
+            <div className={styles.contact}>
+              <h2>Контакт:</h2>
+              <div className={styles.containerContact}>
+                <h3>👤: {ad.name}</h3>
+                <h3>📞: {ad.phone}</h3>
+              </div>
             </div>
           </div>
         </div>
