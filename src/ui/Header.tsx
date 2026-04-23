@@ -76,6 +76,7 @@ export function Header(props: Props) {
                   </div>
                   <h2 onClick={() => {
                     props.actionActive.addActiveTrue()
+                    props.setMyAdsOpen(false)
                     setIsOpen(false)
                   }}>
                     Создать обявления

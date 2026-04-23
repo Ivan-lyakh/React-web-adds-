@@ -4,22 +4,24 @@ import { Loading } from "./Loading"
 import styles from './MyAds.module.css'
 import { translateCategories } from "../bll/useForm"
 import { handleDelete } from "../dal/api"
-import { useState } from "react"
+import type { ActionActive } from "../bll/useAddActive"
 
 type Props = {
   actualUser: User | null
   setMyAdsOpen: React.Dispatch<React.SetStateAction<boolean>>
+  actionActive: ActionActive
+  setDeleteAds: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export function MyAds(props: Props) {
 
   const userId = props.actualUser?.id
 
-  console.log(userId)
+
 
   const { myAds, loading } = useMyAds(userId)
 
-  const [deleteAds, setDeleteAds] = useState(false)
+
 
   if (loading) {
     return (
@@ -27,23 +29,26 @@ export function MyAds(props: Props) {
     )
   }
 
-  if (deleteAds) {
-    return (
-      <div>
-        <h1>Ваше обявления было удалено!</h1>
-        <button
-          onClick={() => {
-            setDeleteAds(false)
-            window.location.reload();
-          }}
-        >Ок</button>
-      </div>
-    )
-  }
 
   if (myAds?.length === 0) {
     return (
-      <h1>У вас пока нет обявлений!</h1>
+      <div className={styles.noAds}>
+
+        <div>
+          <h2>У вас пока нет обявлений :(</h2>
+        </div>
+        <div>
+          <p>Но не розстраивайтесь,Вы в любой момент можете его
+            <span>
+              <button onClick={() => {
+                props.actionActive.addActiveTrue()
+                props.setMyAdsOpen(false)
+              }}>создать</button>
+            </span>
+            :)</p>
+        </div>
+      </div>
+
     )
   }
 
@@ -63,7 +68,7 @@ export function MyAds(props: Props) {
                     onClick={() => {
                       userId &&
                         handleDelete(item.id)
-                      setDeleteAds(true)
+                      props.setDeleteAds(true)
                     }}
                   >Удалить</button>
                 </div>

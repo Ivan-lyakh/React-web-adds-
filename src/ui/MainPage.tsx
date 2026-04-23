@@ -9,6 +9,7 @@ import { type ActionActive } from '../bll/useAddActive'
 import { Loading } from './Loading'
 import type { User } from '@supabase/supabase-js'
 import { MyAds } from './MyAds'
+import { useState } from 'react'
 
 
 type Props = {
@@ -25,6 +26,21 @@ export function MainPage(props: Props) {
 
   const { searchActive, actionFormSearch, searchForm } = useSideBar()
 
+  const [deleteAds, setDeleteAds] = useState(false)
+
+  if (deleteAds) {
+    return (
+      <div className={styles.deleteAds}>
+        <h2>Ваше обявления было удалено!</h2>
+        <button
+          onClick={() => {
+            setDeleteAds(false)
+            window.location.reload();
+          }}
+        >Ок</button>
+      </div>
+    )
+  }
 
   if (props.myAdsOpen) {
     return (
@@ -32,6 +48,8 @@ export function MainPage(props: Props) {
         <div className={styles.container}>
           <div className={styles.mainPageBody}>
             <MyAds
+              setDeleteAds={setDeleteAds}
+              actionActive={props.actionActive}
               actualUser={props.actualUser}
               setMyAdsOpen={props.setMyAdsOpen}
             />

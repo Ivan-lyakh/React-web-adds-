@@ -1,11 +1,21 @@
-import type { GlobalList } from "../bll/useAddList";
+
 import './ListItem.module.css'
 import styles from './ListItem.module.css'
 import { translateCategories } from "../bll/useForm";
 import { Link } from "react-router-dom";
 
 
-export function ListItem(props: GlobalList) {
+type ListItemProps = {
+  id: string;
+  title: string;
+  price: string;
+  city: string;
+  categories: string;
+  img: string;
+  read: string;
+};
+
+export function ListItem(props: ListItemProps) {
 
   return (
     <Link to={`/ad/${props.id}`}>

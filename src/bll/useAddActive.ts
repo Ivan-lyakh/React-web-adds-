@@ -9,6 +9,8 @@ export function useAddActive() {
 
   const [addActiveStatus, setAddActiveStatus] = useState<boolean>(false)
 
+  console.log(addActiveStatus)
+
   const addActiveTrue = () => setAddActiveStatus(true)
 
   const addActiveFalse = () => setAddActiveStatus(false)

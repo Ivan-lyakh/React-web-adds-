@@ -95,6 +95,7 @@ export function CreateAds(props: Props) {
 
           <div className={styles.createAdsColumn}>
             <select
+              required
               value={form.categories}
               onChange={(e) => actionForm.getCattegories(e)}
             >

@@ -1,188 +1,163 @@
 .details {
-  padding: 25px 0px;
+  padding: 25px 0;
+  background: #f5f5f5;
+}
+
+.container {
+  width: 100%;
+  padding: 0 20px;
+  min-height: 100%;
+}
+
+.detailsMain {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+  gap: 20px;
+}
+
+.detailsSwiper {
+  min-width: 0;
+}
+
+.detailsSwiperItem {
+  padding-bottom: 12px;
+}
+
+.detailsSwiperItem h2 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #222;
+}
+
+.swiper {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 .image {
   width: 100%;
   height: 300px;
   object-fit: cover;
-  border-radius: 10px;
-}
-
-.contact{
-  background-color: orange;
-  color: #fff;
-  padding: 15px;
-  border-radius: 5px;
-}
-
-.containerContact{
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.contact h2{
-  padding-bottom: 20px;
-}
-
-.detailsSwiperItem {
-  padding-bottom: 20px;
-  font-size: 20px;
-}
-
-.detailsBodyItem {
-  padding-bottom: 15px;
-}
-
-.detailsMain {
-  display: flex;
-  flex-direction: column;
-}
-
-.detailsMain {
-  padding: 20px 0px;
+  border-radius: 12px;
+  display: block;
 }
 
 .detailsBody {
   font-family: 'Jost';
-  font-size: 20px;
-  padding: 20px 0px;
+  padding: 10px 0;
+}
+
+.detailsBodyItem {
+  padding-bottom: 10px;
+}
+
+.detailsBodyItem:first-child h2 {
+  font-size: 28px;
+  font-weight: bold;
+  color: #000;
+}
+
+.detailsBodyItem h2 {
+  font-size: 15px;
+  color: #666;
+  margin: 0;
+}
+
+.contact {
+  background: #ff9500;
+  color: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  margin-top: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.contact h2 {
+  padding-bottom: 10px;
+  font-size: 16px;
+}
+
+.containerContact {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.containerContact h3 {
+  font-weight: normal;
 }
 
 .detailsRead {
-  padding: 20px;
-  background-color: orange;
-  color: #fff;
+  margin-top: 20px;
+  padding: 18px;
+  background: #fff;
+  color: #333;
   font-family: 'Noto Sans';
   white-space: pre-wrap;
-  border-radius: 5px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
-.detailsRead h2{
-  font-size: 20px;
-  padding-bottom: 25px;
+.detailsRead h2 {
+  font-size: 18px;
+  padding-bottom: 12px;
 }
 
 .swiper-pagination-bullet {
-  background: gray;
+  background: #ccc;
   opacity: 1;
 }
 
-:global(.swiper) {
-  --swiper-navigation-size: 35px;
-  --swiper-navigation-color: orange;
-  --swiper-pagination-color: orange;
-}
-
 .swiper-pagination-bullet-active {
-  background: black;
+  background: #ff9500;
 }
 
-.swiper {
-  width: 100%;
+:global(.swiper) {
+  --swiper-navigation-size: 30px;
+  --swiper-navigation-color: #ff9500;
+  --swiper-pagination-color: #ff9500;
 }
-
 
 @media (min-width:450px) {
   .image {
-    width: 100%;
     height: 400px;
-    object-fit: cover;
-    border-radius: 10px;
   }
 }
 
-
 @media (min-width:550px) {
   .detailsSwiper {
-    flex: 70%;
+    flex: 60%;
     min-width: 0;
   }
 
   .detailsBody {
-    flex: 30%;
+    flex: 40%;
     min-width: 0;
   }
 
   .detailsMain {
     flex-direction: row;
-    max-width: 100%;
-    gap: 40px;
+    gap: 30px;
   }
-
-  .image {
-    max-width: 100%;
-  }
-}
-
-@media (min-width:768px) {
-  .image {
-    height: 500px;
-  }
-}
-
-@media (min-width:1200px) {
-  .detailsSwiper {
-    flex: 50%;
-  }
-}
-
-@media (min-width:1400px) {
-  .detailsSwiper {
-    flex: 40%;
-  }
-
-  .image {
-    height: 550px;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.container {
-  width: 100%;
-  padding: 0px 20px;
-  min-height: 100%;
 }
 
 @media (min-width:768px) {
   .container {
-    width: 100%;
-    padding: 0px 40px;
+    padding: 0 40px;
+  }
+
+  .image {
+    height: 500px;
   }
 }
 
 @media (min-width:1000px) {
   .container {
     max-width: 1000px;
-    margin: 0px auto;
+    margin: 0 auto;
     border-left: 1px solid rgba(128, 128, 128, 0.283);
     border-right: 1px solid rgba(128, 128, 128, 0.285);
   }
@@ -191,27 +166,39 @@
 @media (min-width:1200px) {
   .container {
     max-width: 1100px;
-    margin: 0px auto;
+    margin: 0 auto;
+  }
+
+  .detailsSwiper {
+    flex: 55%;
   }
 }
 
 @media (min-width:1400px) {
   .container {
     max-width: 1200px;
-    margin: 0px auto;
+    margin: 0 auto;
+  }
+
+  .detailsSwiper {
+    flex: 45%;
+  }
+
+  .image {
+    height: 550px;
   }
 }
 
 @media (min-width:1500px) {
   .container {
     max-width: 1350px;
-    margin: 0px auto;
+    margin: 0 auto;
   }
 }
 
 @media (min-width:1550px) {
   .container {
     max-width: 1450px;
-    margin: 0px auto;
+    margin: 0 auto;
   }
 }

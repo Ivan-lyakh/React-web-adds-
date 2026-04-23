@@ -1,70 +1,65 @@
 .item {
-  padding: 20px;
-  border: 2px solid orange;
-  display: flex;
-  gap: 15px;
-  flex-direction: column;
-  cursor: pointer;
-  transition: 300ms;
-}
-
-a {
+  font-family: "Jost";
+  display: block;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
   text-decoration: none;
-  color: inherit;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
 }
 
 .item:hover {
-  transform: scale(1.01);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
-.item h2 {
-  margin-bottom: 15px;
-  font-family: 'Jost';
+/* Картинка */
+.imgContainer {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
 }
 
 .img {
   width: 100%;
   height: 100%;
-  position: absolute;
-  border-radius: 5px;
+  object-fit: cover;
+  display: block;
 }
 
+/* Контент */
+.body {
+  padding: 12px;
+}
 
+/* Заголовок */
+.body h2:first-child {
+  font-size: 16px;
+  margin: 0 0 6px 0;
+  color: #222;
+}
 
-.imgContainer {
-  height: 320px;
-  position: relative;
-  display: flex;
-  justify-content: left;
+/* Цена */
+.body h2:nth-child(2) {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 0 6px 0;
+  color: #000;
+}
+
+/* Остальной текст */
+.body h2 {
+  font-size: 14px;
+  margin: 2px 0;
+  color: #666;
+}
+
+@media (min-width:1400px){
+  .imgContainer {
   width: 100%;
-  margin-bottom: 15px;
+  height: 240px;
+  overflow: hidden;
 }
-
-
-@media(min-width:375px) {
-  .imgContainer {
-    width: 160px;
-    height: 220px;
-    border-radius: 5px;
-  }
-
-  .item {
-    flex-direction: row;
-    align-items: center;
-  }
-
-  .body {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-}
-
-
-@media (min-width:1200px) {
-  .imgContainer {
-    width: 200px;
-    height: 240px;
-    border-radius: 5px;
-  }
 }
