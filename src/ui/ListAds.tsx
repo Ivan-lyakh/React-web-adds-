@@ -48,6 +48,7 @@ export function ListAds(props: Props) {
         {props.globalList.map(ad => {
           return (
             <ListItem
+              date={ad.date}
               key={ad.id}
               title={ad.title}
               price={ad.price}

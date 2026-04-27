@@ -18,7 +18,6 @@ export function MyAds(props: Props) {
   const userId = props.actualUser?.id
 
 
-
   const { myAds, loading } = useMyAds(userId)
 
 

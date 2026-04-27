@@ -5,6 +5,8 @@ import { useEffect, useState } from "react"
 import type { GlobalList } from "./useAddList"
 
 
+
+
 export function useAdDetail() {
 
   const { id } = useParams()
@@ -23,6 +25,7 @@ export function useAdDetail() {
 
     loadData()
   }, [id])
+
 
   return { ad, loading }
 }

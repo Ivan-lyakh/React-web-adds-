@@ -13,6 +13,7 @@ type Props = {
   actionUser: ActionUser
   setIsAuthOpen: React.Dispatch<React.SetStateAction<boolean>>
   setMyAdsOpen: React.Dispatch<React.SetStateAction<boolean>>
+  setSavedAdOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export function Header(props: Props) {
@@ -46,9 +47,10 @@ export function Header(props: Props) {
               <div
                 className={styles.headerLogo}
                 onClick={() => {
-                  props.actionActive.addActiveFalse(),
-                    props.setIsAuthOpen(false)
+                  props.actionActive.addActiveFalse()
+                  props.setIsAuthOpen(false)
                   props.setMyAdsOpen(false)
+                  props.setSavedAdOpen(false)
                 }}>
                 <h1>OXL</h1>
               </div>
@@ -74,32 +76,49 @@ export function Header(props: Props) {
                     <h3 className={styles.email}>{props.actualUser.email}</h3>
                     <h3 className={styles.email}>{props.actualUser.user_metadata.phone}</h3>
                   </div>
-                  <h2 onClick={() => {
-                    props.actionActive.addActiveTrue()
-                    props.setMyAdsOpen(false)
-                    setIsOpen(false)
-                  }}>
-                    Создать обявления
-                  </h2>
-
-                  <h2
-                    onClick={() => {
-                      props.setMyAdsOpen(true)
+                  <Link to={'/'}>
+                    <h2 onClick={() => {
+                      props.actionActive.addActiveTrue()
+                      props.setMyAdsOpen(false)
+                      props.setSavedAdOpen(false)
                       setIsOpen(false)
-                    }}
-                  >Мои обялвения
-                  </h2>
+                    }}>
+                      Создать обявления
+                    </h2>
+                  </Link>
 
-                  <h2>Сохраненные обявления</h2>
+                  <Link to={"/"}>
+                    <h2
+                      onClick={() => {
+                        setIsOpen(false)
+                        props.setSavedAdOpen(false)
+                        props.setMyAdsOpen(true)
+                      }}
+                    >Мои обялвения
+                    </h2>
+                  </Link>
 
+                  <Link to={'/'}>
+                    <h2
+                      onClick={() => {
+                        props.setMyAdsOpen(false)
+                        setIsOpen(false)
+                        props.setSavedAdOpen(true)
+                      }}
+                    >Сохраненные обявления</h2>
+                  </Link>
+
+                  <Link to={'/'}>
                   <button onClick={() => {
                     props.actionUser.handleLogout()
                     setIsOpen(false)
                     props.setMyAdsOpen(false)
+                    props.setSavedAdOpen(false)
                     props.actionActive.addActiveFalse()
                   }}>
                     Выйти
                   </button>
+                  </Link>
                 </div>
               </div>}
             {!props.actualUser && <button

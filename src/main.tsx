@@ -20,11 +20,13 @@ function Main() {
 
   const { addActiveStatus, actionActive } = useAddActive()
 
-  const { actualUser, actionUser , errorMessage } = useUsers()
+  const { actualUser, actionUser, errorMessage } = useUsers()
 
-  const [myAdsOpen,setMyAdsOpen] = useState(false)
+  const [myAdsOpen, setMyAdsOpen] = useState(false)
 
   const [isAuthOpen, setIsAuthOpen] = useState(false)
+
+  const [savedAdOpen, setSavedAdOpen] = useState(false)
 
   return (
 
@@ -34,30 +36,34 @@ function Main() {
           <Header
             setMyAdsOpen={setMyAdsOpen}
             setIsAuthOpen={setIsAuthOpen}
+            setSavedAdOpen={setSavedAdOpen}
             actionUser={actionUser}
             actualUser={actualUser}
-            actionActive={actionActive} />
+            actionActive={actionActive}/>
         </div>
         <div className={styles.main}>
           <Routes>
             <Route path='/' element={
               <MainPage
+                savedAdOpen={savedAdOpen}
                 myAdsOpen={myAdsOpen}
                 actualUser={actualUser}
                 actionActive={actionActive}
                 setMyAdsOpen={setMyAdsOpen}
                 addActiveStatus={addActiveStatus} />} />
             <Route path="/ad/:id" element={
-              <AdDetails />} />
+              <AdDetails
+              actualUser={actualUser}
+              />} />
           </Routes>
         </div>
         <div className={styles.footer}>
           <Footer />
         </div>
-        {isAuthOpen && <AuthModal 
-        actionUser={actionUser}
-        errorMessage={errorMessage}
-        setIsAuthOpen={setIsAuthOpen} />}
+        {isAuthOpen && <AuthModal
+          actionUser={actionUser}
+          errorMessage={errorMessage}
+          setIsAuthOpen={setIsAuthOpen} />}
       </div>
     </BrowserRouter>
   )

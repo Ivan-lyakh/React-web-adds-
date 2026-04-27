@@ -2,6 +2,66 @@
 import type { newForm } from "../bll/useAddList";
 import { supabase } from "../supaBaseClient";
 
+
+
+export async function addToFavorites(userId: string, adId: string) {
+  const { error } = await supabase
+    .from("savedAd")
+    .insert([{ user_id: userId, ad_id: adId }])
+
+  if (error) console.error(error)
+}
+
+export async function removeFromFavorites(userId: string, adId: string) {
+  const { error } = await supabase
+    .from("savedAd")
+    .delete()
+    .eq("user_id", userId)
+    .eq("ad_id", adId)
+
+  if (error) console.error(error)
+}
+
+export async function checkFavorite(userId: string, adId: string) {
+  const { data } = await supabase
+    .from("savedAd")
+    .select("*")
+    .eq("user_id", userId)
+    .eq("ad_id", adId)
+    .maybeSingle()
+
+  return data
+}
+
+export async function getSavedIds(userId: string) {
+  const { data, error } = await supabase
+    .from("savedAd")
+    .select()
+    .eq("user_id", userId)
+
+  if (error) {
+    console.error(error)
+    return []
+  }
+
+  return data
+}
+
+export async function getAdsByIds(ids: string[]) {
+  const { data, error } = await supabase
+    .from("ads")
+    .select("*")
+    .in("id", ids)
+
+  if (error) {
+    console.error(error)
+    return []
+  }
+
+  return data
+}
+
+
 export async function getAds() {
   const { data, error } = await supabase.from('ads').select('*')
 
@@ -24,6 +84,7 @@ export async function addAds(newItem: newForm) {
 
   if (error) {
     console.log(error)
+    console.log("Ошибка добавления в главыный спискок!")
     return null
   }
 
@@ -51,6 +112,7 @@ export async function getMyAds(userId: string) {
   return { data }
 }
 
+
 export const handleDelete = async (adsId: string) => {
   const { error } = await supabase
     .from('ads')
@@ -67,3 +129,5 @@ export const getUser = async () => {
 
   return data.user
 }
+
+

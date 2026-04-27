@@ -73,7 +73,8 @@ export function CreateAds(props: Props) {
               img: urls,
               name: props.actualUser.user_metadata?.name || "No name",
               phone: props.actualUser.user_metadata?.phone || "No phone",
-              user_id: props.actualUser.id || ""
+              user_id: props.actualUser.id || "" ,
+              date: new Date().toISOString()
             }
 
             console.log(newForm)
@@ -199,7 +200,7 @@ export function CreateAds(props: Props) {
               type='submit'>Опубликовать</button>
           </div>
         </form>
-      </div>
+      </div >
     )
   }
 

@@ -18,6 +18,7 @@ export type GlobalList = {
   name: string,
   phone: string,
   user_id: string
+  date: string
 }
 
 export type newForm = {
@@ -30,6 +31,7 @@ export type newForm = {
   phone: string,
   user_id: string
   img: string[]
+  date: string
 }
 
 

@@ -13,6 +13,7 @@ type ListItemProps = {
   categories: string;
   img: string;
   read: string;
+  date: string
 };
 
 export function ListItem(props: ListItemProps) {
@@ -30,6 +31,7 @@ export function ListItem(props: ListItemProps) {
           <h2>Цена: {Number(props.price).toLocaleString('de-DE')}$</h2>
           <h2>Город: {props.city}</h2>
           <h2>Каттегория: {translateCategories(props.categories)}</h2>
+          <h3>{new Date(props.date).toLocaleDateString('ru-RU')}</h3>
         </div>
       </div>
     </Link>

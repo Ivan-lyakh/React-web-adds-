@@ -9,7 +9,8 @@ import { type ActionActive } from '../bll/useAddActive'
 import { Loading } from './Loading'
 import type { User } from '@supabase/supabase-js'
 import { MyAds } from './MyAds'
-import { useState } from 'react'
+import {  useState } from 'react'
+import { SavedAd } from './SavedAd'
 
 
 type Props = {
@@ -17,6 +18,7 @@ type Props = {
   actionActive: ActionActive
   actualUser: User | null
   myAdsOpen: boolean
+  savedAdOpen: boolean
   setMyAdsOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
@@ -28,6 +30,8 @@ export function MainPage(props: Props) {
 
   const [deleteAds, setDeleteAds] = useState(false)
 
+
+
   if (deleteAds) {
     return (
       <div className={styles.deleteAds}>
@@ -38,6 +42,20 @@ export function MainPage(props: Props) {
             window.location.reload();
           }}
         >Ок</button>
+      </div>
+    )
+  }
+
+  if (props.savedAdOpen) {
+    return (
+      <div className={styles.mainPage}>
+        <div className={styles.container}>
+          <div className={styles.mainPageBody}>
+            <SavedAd
+              actualUser={props.actualUser}
+            />
+          </div>
+        </div>
       </div>
     )
   }

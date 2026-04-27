@@ -49,11 +49,19 @@
   color: #000;
 }
 
+
+
 /* Остальной текст */
 .body h2 {
   font-size: 14px;
   margin: 2px 0;
   color: #666;
+}
+
+.body h3{
+  padding-top: 10px;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 @media (min-width:1400px){
