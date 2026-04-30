@@ -1,16 +1,16 @@
 
 import { createRoot } from 'react-dom/client'
-import './index.module.css'
-import styles from './index.module.css'
 import { Header } from './ui/Header'
 import { MainPage } from './ui/MainPage'
 import { Footer } from './ui/Footer'
 import { useAddActive } from './bll/useAddActive'
 import { AdDetails } from './ui/AdDetails'
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { HashRouter, Routes, Route } from "react-router-dom"
 import { useUsers } from './bll/useUsers'
 import { useState } from 'react'
 import { AuthModal } from './ui/AuthModal'
+import styles from './index.module.css'
+import './index.module.css'
 
 createRoot(document.getElementById('root')!).render(
   <Main />
@@ -30,7 +30,7 @@ function Main() {
 
   return (
 
-    <BrowserRouter>
+    <HashRouter>
       <div className={styles.wrapper}>
         <div className={styles.header}>
           <Header
@@ -39,7 +39,7 @@ function Main() {
             setSavedAdOpen={setSavedAdOpen}
             actionUser={actionUser}
             actualUser={actualUser}
-            actionActive={actionActive}/>
+            actionActive={actionActive} />
         </div>
         <div className={styles.main}>
           <Routes>
@@ -53,7 +53,7 @@ function Main() {
                 addActiveStatus={addActiveStatus} />} />
             <Route path="/ad/:id" element={
               <AdDetails
-              actualUser={actualUser}
+                actualUser={actualUser}
               />} />
           </Routes>
         </div>
@@ -65,6 +65,6 @@ function Main() {
           errorMessage={errorMessage}
           setIsAuthOpen={setIsAuthOpen} />}
       </div>
-    </BrowserRouter>
+    </HashRouter>
   )
 }

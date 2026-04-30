@@ -18,7 +18,6 @@ export type ActionForm = {
   getUserId: (id: string) => void
 }
 
-
 export type InittalForm = {
   price: string,
   title: string,
@@ -51,7 +50,6 @@ export const categories = [
   { label: "Ювелирные изделия", value: "jewelry" }
 ]
 
-
 export const translateCategories = (cat: string) => {
   const found = categories.find(c => c.value === cat)
   return found ? found.label : cat
@@ -76,7 +74,6 @@ export function useForm() {
   }
 
   const [form, setForm] = useState<InittalForm>(InittalForm)
-
 
   function getTitle(e: React.ChangeEvent<HTMLInputElement>) {
     setForm(prev => ({
@@ -139,10 +136,10 @@ export function useForm() {
     setForm(prev => {
       const newArr = [...prev.img];
 
-      const selected = newArr[index]; // выбранный файл
+      const selected = newArr[index]; 
 
-      newArr.splice(index, 1); // удалить его из старого места
-      newArr.unshift(selected); // добавить в начало
+      newArr.splice(index, 1);
+      newArr.unshift(selected); 
 
       return {
         ...prev,
@@ -155,7 +152,7 @@ export function useForm() {
     setForm(prev => {
       const newArr = [...prev.img];
 
-      newArr.splice(index, 1); // удалить его из старого места
+      newArr.splice(index, 1);
 
       return {
         ...prev,
@@ -189,7 +186,6 @@ export function useForm() {
     });
   }
 
-
   function getPrice(e: React.ChangeEvent<HTMLInputElement>) {
     setForm(prev => ({
       ...prev,
@@ -215,8 +211,7 @@ export function useForm() {
     setForm(InittalForm)
   }
 
-
-  const actionForm: ActionForm = { getCity, getPrice, getTitle, getCattegories, resetForm, getFiles, upload, setMainImage, deleteImg, statusTogle, getRead , getName , getPhone , getUserId }
+  const actionForm: ActionForm = { getCity, getPrice, getTitle, getCattegories, resetForm, getFiles, upload, setMainImage, deleteImg, statusTogle, getRead, getName, getPhone, getUserId }
 
   return { actionForm, form, categories, status }
 }

@@ -29,7 +29,6 @@ export type InittalFormFilter = {
     categories: ''
   }
 
-
 export function useSideBar() {
 
   const [searchActive, setSearchActive] = useState<boolean>(false)
@@ -75,7 +74,6 @@ export function useSideBar() {
     }))
   }
 
-
   function getCity(e: React.ChangeEvent<HTMLInputElement>) {
     setSearchForm(prev => ({
       ...prev,
@@ -90,7 +88,6 @@ export function useSideBar() {
     }))
   }
 
-
   function resetForm() {
     setSearchForm(InittalFormFilter)
   }
@@ -98,7 +95,6 @@ export function useSideBar() {
   function searchActiveTogle() {
     setSearchActive(!searchActive)
   }
-
 
   const actionFormSearch: ActionFormSearch = { getCity, getMinPrice , getMaxPrice , getTitle, getCattegories, resetForm , searchActiveTogle , selectFilter }
 

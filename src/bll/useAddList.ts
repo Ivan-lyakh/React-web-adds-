@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { getAds } from "../dal/api";
 import { addAds } from "../dal/api";
 
-
 export type ActionGL = {
   addGlobalList: (form: newForm) => void
 }
@@ -33,7 +32,6 @@ export type newForm = {
   img: string[]
   date: string
 }
-
 
 export function useAddList() {
 

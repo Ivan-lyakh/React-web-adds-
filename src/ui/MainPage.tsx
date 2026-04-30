@@ -1,16 +1,16 @@
-import './MainPage.module.css'
-import styles from './MainPage.module.css'
+import { type ActionActive } from '../bll/useAddActive'
+import { type User } from '@supabase/supabase-js'
 import { CreateAds } from './CreateAds'
 import { ListAds } from './ListAds'
 import { useAddList } from '../bll/useAddList'
 import { SideBar } from './SideBar'
 import { useSideBar } from '../bll/useSideBar'
-import { type ActionActive } from '../bll/useAddActive'
 import { Loading } from './Loading'
-import type { User } from '@supabase/supabase-js'
 import { MyAds } from './MyAds'
-import {  useState } from 'react'
+import { useState } from 'react'
 import { SavedAd } from './SavedAd'
+import styles from './MainPage.module.css'
+import './MainPage.module.css'
 
 
 type Props = {
@@ -29,8 +29,6 @@ export function MainPage(props: Props) {
   const { searchActive, actionFormSearch, searchForm } = useSideBar()
 
   const [deleteAds, setDeleteAds] = useState(false)
-
-
 
   if (deleteAds) {
     return (

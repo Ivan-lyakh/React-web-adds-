@@ -1,14 +1,14 @@
-import { ListItem } from "./ListItem"
-import styles from './ListAds.module.css'
-import type { GlobalList } from "../bll/useAddList"
+
+import { type GlobalList } from "../bll/useAddList"
 import { type ActionFormSearch } from "../bll/useSideBar"
+import { ListItem } from "./ListItem"
 import { ErorFilterResult } from "./Eror"
+import styles from './ListAds.module.css'
 
 type Props = {
   globalList: GlobalList[]
   actionFormSearch: ActionFormSearch
 }
-
 export function FilterResult(props: Props) {
 
   const filteredAds = props.globalList.filter(ad => props.actionFormSearch.selectFilter(ad))

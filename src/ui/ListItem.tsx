@@ -1,8 +1,8 @@
 
-import './ListItem.module.css'
-import styles from './ListItem.module.css'
 import { translateCategories } from "../bll/useForm";
 import { Link } from "react-router-dom";
+import styles from './ListItem.module.css'
+import './ListItem.module.css'
 
 
 type ListItemProps = {

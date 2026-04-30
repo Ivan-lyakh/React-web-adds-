@@ -16,22 +16,23 @@ export function AuthModal(props: Props) {
 
   const { registerMode, setRegisterMode, setEmail, setPassword, reset, atributes, setPhone, setName } = useAuthModal()
 
-
   return (
     <div className={styles.authModal}>
       <div className={styles.container}>
         <div className={styles.body}>
+
           <div className={styles.columnHeader}>
             <h2>{registerMode ? "Регистрация" : "Логин"}</h2>
             <button
               onClick={() => {
                 props.setIsAuthOpen(false),
                   props.actionUser.resetErorMessage()
-                  setVisiblePassword(false)
+                setVisiblePassword(false)
                 reset()
               }}
             >❌</button>
           </div>
+
           <div className={styles.column}>
             <input
               name="random-email"
@@ -40,8 +41,8 @@ export function AuthModal(props: Props) {
               value={atributes.email}
               onChange={(e) => setEmail(e.target.value)}
               type="email" />
-
           </div>
+
           <div className={styles.column}>
             <div className={styles.passwordWrapper}>
               <input
@@ -59,12 +60,11 @@ export function AuthModal(props: Props) {
                 {visiblePassword ? '🙉' : '🙈'}
               </span>
             </div>
-
-
           </div>
 
           {registerMode &&
             <div className={styles.body}>
+
               <div className={styles.column}>
                 <input
                   name="random-text"
@@ -84,6 +84,7 @@ export function AuthModal(props: Props) {
                   onChange={(e) => setPhone(e.target.value)}
                   type="phone" />
               </div>
+
             </div>
           }
 
@@ -110,10 +111,12 @@ export function AuthModal(props: Props) {
               {registerMode ? 'Зарегестрироваться' : 'Войти'}
             </button>
           </div>
+
           <div className={styles.column}>
             {!registerMode && <h2>Нет аккаунта? <span onClick={() => { setRegisterMode(true), props.actionUser.resetErorMessage(), reset(), setVisiblePassword(false) }}>Зарегестрируйте</span> его прямо сейчас!</h2>}
             {registerMode && <h2>Есть аккаунт? <span onClick={() => { setRegisterMode(false), props.actionUser.resetErorMessage(), reset(), setVisiblePassword(false) }}>Войдите</span> в него прямо сейчас!</h2>}
           </div>
+
         </div>
       </div>
     </div>

@@ -1,9 +1,9 @@
-
-import { useSavedAd } from "../bll/useSaveAd"
 import type { User } from "@supabase/supabase-js"
+import { useSavedAd } from "../bll/useSaveAd"
 import { Loading } from "./Loading"
-import styles from './ListAds.module.css'
 import { ListItem } from "./ListItem"
+import styles from './ListAds.module.css'
+
 
 type Props = {
   actualUser: User | null
@@ -24,7 +24,7 @@ export function SavedAd(props: Props) {
   if (ads.length === 0) {
     return (
       <div>
-        <h2 style={{fontFamily: "Jost"}}>У вас пока нет сохраненных обялвений!</h2>
+        <h2 style={{ fontFamily: "Jost" }}>У вас пока нет сохраненных обявлений!</h2>
       </div>
     )
   }
@@ -35,17 +35,19 @@ export function SavedAd(props: Props) {
       <div className={styles.listAddBody}>
         {ads.map(ad => {
           return (
-            <ListItem
-              date={ad.date}
-              key={ad.id}
-              title={ad.title}
-              price={ad.price}
-              city={ad.city}
-              id={ad.id}
-              read={ad.read}
-              categories={ad.categories}
-              img={ad.img}
-            />
+            <div onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+              <ListItem
+                date={ad.date}
+                key={ad.id}
+                title={ad.title}
+                price={ad.price}
+                city={ad.city}
+                id={ad.id}
+                read={ad.read}
+                categories={ad.categories}
+                img={ad.img}
+              />
+            </div>
           )
         })}
       </div>

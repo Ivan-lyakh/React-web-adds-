@@ -3,20 +3,17 @@ import type { User } from '@supabase/supabase-js'
 import type { ActionActive } from '../bll/useAddActive'
 import type { ActionGL, newForm } from '../bll/useAddList'
 import { categories, useForm } from '../bll/useForm'
-import './CreateAds.module.css'
 import styles from './CreateAds.module.css'
+import './CreateAds.module.css'
 
 type Props = {
   actionGL: ActionGL
   actionActive: ActionActive
   actualUser: User | null
 }
-
 export function CreateAds(props: Props) {
 
   const { form, actionForm, status } = useForm()
-
-
 
   if (!status) {
     return (
@@ -82,9 +79,6 @@ export function CreateAds(props: Props) {
             actionForm.resetForm()
           }}>
 
-
-
-
           <div className={styles.createAdsColumn}>
             <input
               required
@@ -111,7 +105,6 @@ export function CreateAds(props: Props) {
             </select>
           </div>
 
-
           <div className={styles.createAdsColumn}>
             <input
               required
@@ -129,8 +122,6 @@ export function CreateAds(props: Props) {
               placeholder='Город:'
               type='text' />
           </div>
-
-
 
           <div className={styles.createAdsColumn}>
             <div className={styles.createAdsFile}>
@@ -193,7 +184,6 @@ export function CreateAds(props: Props) {
               required
               placeholder='Опишите ваш товар:' />
           </div>
-
 
           <div className={styles.createAdsButton}>
             <button

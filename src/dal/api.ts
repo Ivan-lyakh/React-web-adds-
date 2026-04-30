@@ -2,8 +2,6 @@
 import type { newForm } from "../bll/useAddList";
 import { supabase } from "../supaBaseClient";
 
-
-
 export async function addToFavorites(userId: string, adId: string) {
   const { error } = await supabase
     .from("savedAd")
@@ -61,7 +59,6 @@ export async function getAdsByIds(ids: string[]) {
   return data
 }
 
-
 export async function getAds() {
   const { data, error } = await supabase.from('ads').select('*')
 
@@ -74,7 +71,6 @@ export async function getAds() {
 
   return data
 }
-
 
 export async function addAds(newItem: newForm) {
   const { data, error } = await supabase
@@ -93,7 +89,6 @@ export async function addAds(newItem: newForm) {
   return data[0].id
 }
 
-
 export async function getDetails(id: string) {
   const { data } = await supabase
     .from("ads")
@@ -111,7 +106,6 @@ export async function getMyAds(userId: string) {
     .eq("user_id", userId)
   return { data }
 }
-
 
 export const handleDelete = async (adsId: string) => {
   const { error } = await supabase

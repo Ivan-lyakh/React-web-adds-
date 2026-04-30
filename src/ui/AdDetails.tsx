@@ -1,16 +1,16 @@
 import { useAdDetail } from "../bll/useAdDetails"
 import { Loading } from "./Loading"
-import styles from './AdDetails.module.css'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination } from 'swiper/modules'
 import { translateCategories } from "../bll/useForm";
+import { useFavorite } from "../bll/useFavorit"
+import type { User } from "@supabase/supabase-js"
+import styles from './AdDetails.module.css'
+import noSaved from '../ui/images/noSaved.png'
+import saved from '../ui/images/saved.png'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
-import noSaved from '../ui/images/noSaved.png'
-import saved from '../ui/images/saved.png'
-import { useFavorite } from "../bll/useFavorit"
-import type { User } from "@supabase/supabase-js"
 
 type Props = {
   actualUser: User | null
@@ -23,7 +23,6 @@ export function AdDetails(props: Props) {
   const userId = props.actualUser?.id
 
   const { isFavorite, toggleFavorite } = useFavorite(userId, ad?.id)
-
 
   if (loading) {
     return <Loading />
@@ -63,7 +62,7 @@ export function AdDetails(props: Props) {
             <div className={styles.detailsBodyItem}>
               <h2>Цена указанная продавцом: {Number(ad.price).toLocaleString('de-DE')}$</h2>
             </div>
-            <div style={{paddingTop: "30px"}} className={styles.detailsBodyItem}>
+            <div style={{ paddingTop: "30px" }} className={styles.detailsBodyItem}>
               <h2>Каттегория: {translateCategories(ad.categories)}</h2>
             </div>
             <div className={styles.detailsBodyItem}>
@@ -82,10 +81,10 @@ export function AdDetails(props: Props) {
                   />
                 </span>
               </h3>
-              :
-              <h2>
-                (Что бы открыть функцию сохранения обявления в избранное - необходимо авторизоваться!)
-              </h2>
+                :
+                <h2>
+                  (Что бы открыть функцию сохранения обявления в избранное - необходимо авторизоваться!)
+                </h2>
               }
             </div>
             <div className={styles.contact}>

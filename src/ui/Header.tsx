@@ -1,11 +1,12 @@
-import './Header.module.css'
-import styles from './Header.module.css'
+
 import { type ActionActive } from '../bll/useAddActive'
-import { Link } from 'react-router-dom'
 import { type User } from '@supabase/supabase-js'
 import { type ActionUser } from '../bll/useUsers'
-import user from '../ui/images/user.png'
+import { Link } from 'react-router-dom'
 import { useState, useRef, useEffect } from 'react'
+import styles from './Header.module.css'
+import user from '../ui/images/user.png'
+import './Header.module.css'
 
 type Props = {
   actionActive: ActionActive
@@ -40,9 +41,8 @@ export function Header(props: Props) {
     <div className={styles.header}>
       <div className={styles.container}>
         <div className={styles.headerBody}>
-          <div
-            className={styles.leftColumn}
-          >
+
+          <div className={styles.leftColumn}>
             <Link to={'/'}>
               <div
                 className={styles.headerLogo}
@@ -56,6 +56,7 @@ export function Header(props: Props) {
               </div>
             </Link>
           </div>
+
           <div className={styles.headerTools}>
             {props.actualUser &&
               <div className={styles.user} ref={menuRef}>
@@ -76,6 +77,7 @@ export function Header(props: Props) {
                     <h3 className={styles.email}>{props.actualUser.email}</h3>
                     <h3 className={styles.email}>{props.actualUser.user_metadata.phone}</h3>
                   </div>
+
                   <Link to={'/'}>
                     <h2 onClick={() => {
                       props.actionActive.addActiveTrue()
@@ -109,24 +111,23 @@ export function Header(props: Props) {
                   </Link>
 
                   <Link to={'/'}>
-                  <button onClick={() => {
-                    props.actionUser.handleLogout()
-                    setIsOpen(false)
-                    props.setMyAdsOpen(false)
-                    props.setSavedAdOpen(false)
-                    props.actionActive.addActiveFalse()
-                  }}>
-                    Выйти
-                  </button>
+                    <button onClick={() => {
+                      props.actionUser.handleLogout()
+                      setIsOpen(false)
+                      props.setMyAdsOpen(false)
+                      props.setSavedAdOpen(false)
+                      props.actionActive.addActiveFalse()
+                    }}>
+                      Выйти
+                    </button>
                   </Link>
                 </div>
               </div>}
-            {!props.actualUser && <button
-              onClick={() => {
-                props.setIsAuthOpen(true)
-              }}
-            >Войти</button>}
+            {!props.actualUser &&
+              <button onClick={() => { props.setIsAuthOpen(true) }}
+              >Войти</button>}
           </div>
+
         </div>
       </div>
     </div>

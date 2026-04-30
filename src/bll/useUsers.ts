@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import { getUser } from "../dal/api";
 import { type User } from '@supabase/supabase-js'
 
-
 export type ActionUser = {
   handleLogout: () => void
   handleLogin: (email: string, password: string) => Promise<boolean>
@@ -83,7 +82,6 @@ export function useUsers() {
     setActualUser(null)
 
   }
-
 
   const actionUser: ActionUser = { handleLogout, handleRegister, handleLogin, resetErorMessage }
 

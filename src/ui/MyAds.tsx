@@ -1,10 +1,12 @@
-import { useMyAds } from "../bll/useMyAds"
+
 import { type User } from "@supabase/supabase-js"
+import { type ActionActive } from "../bll/useAddActive"
+import { useMyAds } from "../bll/useMyAds"
 import { Loading } from "./Loading"
-import styles from './MyAds.module.css'
 import { translateCategories } from "../bll/useForm"
 import { handleDelete } from "../dal/api"
-import type { ActionActive } from "../bll/useAddActive"
+import styles from './MyAds.module.css'
+
 
 type Props = {
   actualUser: User | null
@@ -17,17 +19,13 @@ export function MyAds(props: Props) {
 
   const userId = props.actualUser?.id
 
-
   const { myAds, loading } = useMyAds(userId)
-
-
 
   if (loading) {
     return (
       <Loading />
     )
   }
-
 
   if (myAds?.length === 0) {
     return (
@@ -50,7 +48,6 @@ export function MyAds(props: Props) {
 
     )
   }
-
 
   return (
     <div className={styles.myAds}>

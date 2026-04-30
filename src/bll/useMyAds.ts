@@ -19,8 +19,5 @@ export function useMyAds(userId: string | undefined) {
     loadData()
   }, [])
 
-
-
-
   return { myAds, loading }
 }
