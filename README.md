@@ -1,74 +1,54 @@
-# React + TypeScript + Vite
+Oxl
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Oxl is a web application for posting and browsing classified ads.
 
-Currently, two official plugins are available:
+The project allows users to create, view, and manage advertisements in a simple and intuitive interface.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Features
+User authentication
+Create and delete ads
+View detailed ad pages
+Save ads to favorites
+Filter by category, title, and price
+Live search
+Responsive design
+Tech Stack
+React
+TypeScript
+React Router
+Supabase
+CSS Modules
+Swiper
+Live Demo
 
-## React Compiler
+https://ivan-lyakh.github.io/React-web-adds-/
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Note: This will impact Vite dev & build performances.
+Oxl
 
-## Expanding the ESLint configuration
+Oxl — это веб-приложение для размещения и просмотра объявлений.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Проект позволяет пользователям создавать, просматривать и управлять объявлениями через простой и удобный интерфейс.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Возможности
+Аутентификация пользователей
+Создание и удаление объявлений
+Просмотр страницы объявления
+Добавление в избранное
+Фильтрация по категории, названию и цене
+Живой поиск
+Адаптивный дизайн
+Технологии
+React
+TypeScript
+React Router
+Supabase
+CSS Modules
+Swiper
+Демо
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
+https://ivan-lyakh.github.io/React-web-adds-/
     },
   },
 ])
